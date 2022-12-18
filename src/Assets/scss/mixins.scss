@@ -1,15 +1,45 @@
-@mixin rsp($max-width){
-    @media screen and (max-width:$max-width){
+@mixin rsp($max-width) {
+    @media screen and (max-width:$max-width) {
         @content;
     }
 }
-@mixin minRsp($min-width){
-    @media screen and (min-width:$min-width){
+
+@mixin minRsp($min-width) {
+    @media screen and (min-width:$min-width) {
         @content;
     }
 }
-@mixin betweenRsp($min-width, $max-width ){
-    @media (min-width:$min-width) and (max-width:$max-width){
+
+@mixin betweenRsp($min-width, $max-width) {
+    @media (min-width:$min-width) and (max-width:$max-width) {
         @content;
     }
+}
+
+
+@mixin new {
+    .new {
+
+        top: 10%;
+        left: calc(100% + 10px);
+        font-size: 5px;
+        display: inline-block;
+        text-transform: lowercase;
+        line-height: 15px;
+        padding: 0 5px;
+        font-weight: 600;
+        background: var(--new-cl);
+        position: absolute;
+
+        .txt__new {
+            color: #fff;
+            font-size: 10px;
+        }
+    }
+}
+
+@mixin big__menu__active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
