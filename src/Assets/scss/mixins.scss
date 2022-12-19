@@ -37,9 +37,89 @@
         }
     }
 }
+@mixin hot{
+    .hot{
+        top: 10%;
+        left: calc(100% + 10px);
+        font-size: 5px;
+        display: inline-block;
+        text-transform: lowercase;
+        line-height: 15px;
+        padding: 0 5px;
+        font-weight: 600;
+        background: var(--hoy-cl);
+        position: absolute;
+        .txt__hot{
+            color: #fff;
+            background: var(--hot-cl);
+        }   
+       
+    }
+}
 
 @mixin big__menu__active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    // opacity: 1;
+    // visibility: visible;
+    // transform: translateY(0);
+}
+
+@mixin cart__item__style{
+    .cart__item {
+        .child__ul {
+            list-style: none;
+            text-transform: none;
+
+            .child__li {
+                padding: 8px 0px;
+                line-height: normal;
+                h3 {
+                    color: #000;
+                    font-weight: 700;
+                    cursor: pointer;
+                    letter-spacing: 1px;
+                    &:hover {
+                        font-weight: 900;
+                    }
+                }
+
+                a {
+                    cursor: pointer;
+                    @include hot;
+
+                    @include new;
+                    &:hover {
+                        span:not(.new, .txt__new):not(.hot, .txt__hot) {
+                            color: #000;
+                            &::before {
+                                opacity: 1;
+                                visibility: visible;
+                            }
+                        }
+                      
+                        
+                    }
+
+                    span {
+                        font-size: 12px;
+                        color: rgb(26, 25, 25);
+                        font-weight: 700;
+                        position: relative;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: .2rem;
+                            background: var(--badge-cl);
+                            top: 110%;
+                            visibility: hidden;
+                            opacity: 0;
+                            transition: .3s ease;
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
 }
