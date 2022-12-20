@@ -189,19 +189,23 @@
                         letter-spacing: .1em;
                         font-family: 'Nunito Sans', sans-serif;
                         font-weight: 900;
+                        font-size: 12px;
 
                         &:hover {
                             a {
                                 color: var(--select-cl);
 
                             }
-
                             .big__menu__home {
-
                                 @include big__menu__active;
                             }
-
                             .big__menu__shop {
+                                @include big__menu__active;
+                            }
+                            .blog__menu{
+                                @include big__menu__active;
+                            }
+                            .pages__menu{
                                 @include big__menu__active;
                             }
                         }
@@ -218,7 +222,7 @@
                                 position: absolute;
                                 top: 10px;
                                 font-size: 10px;
-                                left: 44%;
+                                left: 45%;
                                 font-weight: 700;
                                 background: var(--badge-cl);
                                 line-height: normal;
@@ -228,56 +232,29 @@
 
                             .badge__buyTheme {
                                 @extend .badge__shop;
-                                left: 62%;
+                                left: 60%;
 
                             }
 
                         }
-
-
                         // Home big menu
                         .big__menu__home {
-                            width: 650px;
-                            position: absolute;
-                            top: 100;
-                            transform: translateY(100px);
-                            visibility: hidden;
-                            opacity: 0;
-                            transition: .3s ease;
-
-                            .all {
-                                padding: 20px;
-
-                                @include cart__item__style;
-                            }
-
+                            @include big__menu__home;
                         }
 
-                        .big__menu__shop {
-                            width: 100%;
-                            position: absolute;
-                            top: 100;
-                            left: 0;
-                            background: #fff;
-                            transform: translateY(100px);
-                            // visibility: hidden;
-                            // opacity: 0;
-                            transition: .3s ease;
-                            color: #000;
-
-                            .left__side {
-                                @include cart__item__style;
-
-                            }
-                            .right__side{
-                                .box{
-                                    border: 1px solid red;
-                                }
-                            }
+                        // Shop big menu
+                        .big__menu__shop {  
+                           @include  big__menu__shop;
                         }
-
-                        // Shop
-
+                        // Blog menu
+                        .blog__menu{
+                            @include blog__menu;
+                        }
+                        
+                        // Pages menu
+                        .pages__menu{
+                            @include pages__menu;
+                        }
 
 
                     }

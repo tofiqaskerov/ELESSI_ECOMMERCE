@@ -1,8 +1,12 @@
+import { Container } from '@mui/material'
 import React from 'react'
+import { Grid } from 'swiper'
 import './footer.scss'
 function Footer() {
   return (
-    <div>Footer</div>
+    <footer className='footer'>
+      footer
+    </footer>
   )
 }
 

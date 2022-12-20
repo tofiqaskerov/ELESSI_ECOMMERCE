@@ -1,8 +1,10 @@
 import React from 'react'
-
+import BannerImg from '../../Assets/Img/bike-slide1.webp'
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <img style={{width: "100%",}} src={BannerImg} alt="" />
+    </div>
   )
 }
 

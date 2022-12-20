@@ -37,8 +37,9 @@
         }
     }
 }
-@mixin hot{
-    .hot{
+
+@mixin hot {
+    .hot {
         top: 10%;
         left: calc(100% + 10px);
         font-size: 5px;
@@ -49,22 +50,44 @@
         font-weight: 600;
         background: var(--hoy-cl);
         position: absolute;
-        .txt__hot{
+
+        .txt__hot {
             color: #fff;
+            font-size: 10px;
             background: var(--hot-cl);
-        }   
-       
+        }
+
     }
 }
 
-@mixin big__menu__active {
-    // opacity: 1;
-    // visibility: visible;
-    // transform: translateY(0);
+@mixin big__menu__home {
+    width: 650px;
+    position: absolute;
+    top: 100;
+    transform: translateY(100px);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;
+    background: #fff;
+    .all {
+        padding: 20px;
+
+        @include cart__item__style;
+    }
 }
 
-@mixin cart__item__style{
+@mixin blog__menu {
+    background: #fff;
+    width: 280px;
+    position: absolute;
+    top: 100;
+    left: 46%;
+    transform: translateY(100px);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;
     .cart__item {
+        padding: 20px;
         .child__ul {
             list-style: none;
             text-transform: none;
@@ -72,11 +95,185 @@
             .child__li {
                 padding: 8px 0px;
                 line-height: normal;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                &:hover{
+                    .child__ul__item{
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(-30px);
+                    }
+                }
                 h3 {
                     color: #000;
                     font-weight: 700;
                     cursor: pointer;
                     letter-spacing: 1px;
+
+                    &:hover {
+                        font-weight: 900;
+                    }
+                }
+
+                a {
+                    cursor: pointer;
+                    &:hover {
+                        span{
+                            color: #000;
+                            &::before {
+                                opacity: 1;
+                                visibility: visible;
+                            }
+                        }
+
+
+                    }
+
+                    span {
+                        font-size: 12px;
+                        color: rgb(26, 25, 25);
+                        font-weight: 700;
+                        position: relative;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: .2rem;
+                            background: var(--hot-cl);
+                            top: 110%;
+                            visibility: hidden;
+                            opacity: 0;
+                            transition: .3s ease;
+                        }
+
+                    }
+                }
+                .rightArrow__icon{
+                    cursor: pointer;
+                }
+                .child__ul__item{
+                    position: absolute;
+                    right: -97% ;
+                    list-style: none;
+                    top: 100%;
+                    transform: translateY(20px);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: .3s ease;
+                    .child__li__item{
+                        padding: 8px 40px 8px 10px;
+                        background: #fff;
+                    }
+
+                }
+
+            }
+        }
+    }
+}
+
+@mixin pages__menu{
+    width: 650px;
+    position: absolute;
+    top: 100;
+    transform: translateY(100px);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;
+    background: #fff;
+    @include cart__item__style;
+    .all{
+        padding: 20px;
+    }
+}
+
+@mixin big__menu__shop {
+    width: 100%;
+    position: absolute;
+    top: 100;
+    left: 0;
+    background: #fff;
+    transform: translateY(100px);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;
+    color: #000;
+    padding: 20px;
+    .left__side {
+        @include cart__item__style;
+
+        .left__side__contain {
+            border-bottom: .7px solid rgb(218, 218, 218);
+            padding-bottom: 10px;
+        }
+
+        .offers {
+            padding: 20px 0px;
+
+            .icon__side {
+                line-height: 20px;
+
+                .icon {
+                    font-size: 40px;
+                    color: gray;
+                }
+            }
+
+            .txt__side {
+                line-height: normal;
+                cursor: default;
+
+                h3 {
+                    letter-spacing: 1px;
+                    font-weight: 900;
+                    color: #000;
+                    text-transform: uppercase;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+    .right__side {
+        .box {
+            border: 1px solid red;
+        }
+    }
+}
+
+@mixin big__menu__active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@mixin cart__item__style {
+    .cart__item {
+
+        .child__ul {
+            list-style: none;
+            text-transform: none;
+
+            .child__li {
+                padding: 8px 0px;
+                line-height: normal;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                h3 {
+                    color: #000;
+                    font-weight: 700;
+                    cursor: pointer;
+                    letter-spacing: 1px;
+
                     &:hover {
                         font-weight: 900;
                     }
@@ -87,16 +284,18 @@
                     @include hot;
 
                     @include new;
+
                     &:hover {
                         span:not(.new, .txt__new):not(.hot, .txt__hot) {
                             color: #000;
+
                             &::before {
                                 opacity: 1;
                                 visibility: visible;
                             }
                         }
-                      
-                        
+
+
                     }
 
                     span {
@@ -104,6 +303,10 @@
                         color: rgb(26, 25, 25);
                         font-weight: 700;
                         position: relative;
+                        .icon{
+                            padding-right: 5px;
+                            font-size: 16px;
+                        }
                         &::before {
                             content: "";
                             position: absolute;
@@ -118,6 +321,7 @@
 
                     }
                 }
+
 
             }
         }

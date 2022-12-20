@@ -3,10 +3,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './header.scss'
 import Logo from '../../Assets/Img/bike-logo-retina_500x.webp'
+import BigMenuImg from '../../Assets/Img/Sample_Product_Image8-21_360x.webp'
 import { CiSearch, CiHeart, CiUser } from 'react-icons/ci'
+import { AiOutlineCar } from 'react-icons/ai'
 import { SlBasket } from 'react-icons/sl'
+import { BsFillCartFill } from 'react-icons/bs'
+import { FaUserAlt } from 'react-icons/fa'
+import { IoHelpBuoyOutline } from 'react-icons/io5'
+import { CgKeyhole } from 'react-icons/cg'
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 function Header() {
     const navbar = [
         {
@@ -94,6 +102,7 @@ function Header() {
                                                         </div>
                                                     )}
                                                 </Link>
+                                                {/* Home menu */}
                                                 {item.catItem === navbar[0].catItem && (
                                                     <div className="big__menu__home">
                                                         <Stack direction={"row"}>
@@ -200,12 +209,13 @@ function Header() {
                                                         </Stack>
                                                     </div>
                                                 )}
+                                                {/* Shop menu */}
                                                 {item.catItem === navbar[1].catItem && (
                                                     <div className="big__menu__shop">
                                                         <Container maxWidth="lg" >
-                                                            <Grid  container >
-                                                                <Grid  className='left__side' xs={9} container >
-                                                                    <Grid xs={12} container>
+                                                            <Grid container >
+                                                                <Grid className='left__side' xs={9} container >
+                                                                    <Grid className='left__side__contain' xs={12} container>
                                                                         <Grid xs={3}>
                                                                             <div className="cart__item">
                                                                                 <ul className="child__ul">
@@ -335,29 +345,52 @@ function Header() {
                                                                             </div>
                                                                         </Grid>
                                                                     </Grid>
-                                                                    <Grid xs={12} container>
-                                                                        <Grid xs={3}>Hi</Grid>
-                                                                        <Grid xs={3}>Hi</Grid>
-                                                                        <Grid xs={3}>Hi</Grid>
+                                                                    <Grid sx={{ display: "flex", alignItems: "center", gap: "1rem" }} className="offers" xs={12} >
+                                                                        <Grid sx={{ display: "flex", alignItems: "center", gap: "1rem" }} xs={4}>
+                                                                            <div className="icon__side">
+                                                                                <AiOutlineCar className='icon car__icon' />
+                                                                            </div>
+                                                                            <div className="txt__side">
+                                                                                <h3>Free Shipping</h3>
+                                                                                <p>Lorem ipsum dolor elit</p>
+                                                                            </div>
+                                                                        </Grid>
+                                                                        <Grid sx={{ display: "flex", alignItems: "center", gap: "1rem" }} xs={4}>
+                                                                            <div className="icon__side">
+                                                                                <IoHelpBuoyOutline className="icon help__icon" />
+                                                                            </div>
+                                                                            <div className="txt__side">
+                                                                                <h3>Awesome Support</h3>
+                                                                                <p>Lorem ipsum dolor elit</p>
+                                                                            </div>
+                                                                        </Grid>
+                                                                        <Grid sx={{ display: "flex", alignItems: "center", gap: "1rem" }} xs={4}>
+                                                                            <div className="icon__side">
+                                                                                <CgKeyhole className="icon keyHole__icon" />
+                                                                            </div>
+                                                                            <div className="txt__side">
+                                                                                <h3>Free return</h3>
+                                                                                <p>Lorem ipsum dolor elit</p>
+                                                                            </div>
+                                                                        </Grid>
                                                                     </Grid>
                                                                 </Grid>
-                                                                <Grid spacing={2} className="right__side" xs={3}>
-                                                                    <Swiper
-                                                                        spaceBetween={50}
-                                                                        slidesPerView={3}
-                                                                        onSlideChange={() => console.log('slide change')}
-                                                                        onSwiper={(swiper) => console.log(swiper)}
-                                                                    >
-                                                                        <SwiperSlide style={{border:"1px solid red"}}>
-                                                                          
-                                                                                <img src="https://cdn.shopify.com/s/files/1/0085/5618/3637/products/Sample_Product_Image8-21_360x.jpg?v=1597635513" alt="" />
+                                                                <Grid item spacing={2} className="right__side" xs={3}>
+                                                                    <div className="contain"  >
+                                                                        <Swiper
 
-                                                                         
+                                                                            // install Swiper modules
+                                                                            modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                                                            slidesPerView={1}
+                                                                            navigation
+                                                                            pagination={{ clickable: true }}
+                                                                            scrollbar={{ draggable: true }}
+                                                                        >
 
-                                                                        </SwiperSlide>
 
-                                                                        ...
-                                                                    </Swiper>
+                                                                        </Swiper>
+                                                                    </div>
+
                                                                 </Grid>
 
                                                             </Grid>
@@ -365,6 +398,130 @@ function Header() {
 
 
                                                         </Container>
+                                                    </div>
+                                                )}
+                                                {/* Blog menu */}
+                                                {item.catItem === navbar[2].catItem && (
+                                                    <div className="blog__menu">
+                                                        <Grid className='all'>
+                                                            <div className="cart__item">
+                                                                <ul className="child__ul">
+                                                                    <li className="child__li"><Link to="/"><span>Grid Layout</span></Link></li>
+                                                                    <li className="child__li"><Link to="/"><span>Masonry Layout</span></Link></li>
+                                                                    <li className="child__li"><Link to="/"><span>Left Sidebar</span></Link></li>
+                                                                    <li className="child__li"><Link to="/"><span>Right Sidebar</span></Link></li>
+                                                                    <li className="child__li"><Link to="/"><span>Single Post with Products Listing</span></Link></li>
+                                                                    <li className="child__li"><Link to="/"><span>Single Post with Instagram Shop</span></Link></li>
+                                                                    <li className="child__li">
+                                                                        <Link to="/">
+                                                                            <span>Single Post with Lookbook </span>
+                                                                        </Link>
+                                                                        <MdOutlineKeyboardArrowRight className='icon rightArrow__icon' />
+                                                                        <ul className="child__ul__item">
+                                                                            <li className="child__li__item">
+                                                                                <Link to="/"><span>Single Post with Gallery</span></Link>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </Grid>
+                                                    </div>
+                                                )}
+                                                {/* Pages menu */}
+                                                {item.catItem === navbar[3].catItem && (
+                                                    <div className="pages__menu">
+                                                        <Stack direction={"row"}>
+                                                            <Grid className='all' container justifyContent={"space-between"} >
+                                                                <Grid xs={4} >
+                                                                    <div className="cart__item">
+                                                                        <ul className="child__ul">
+                                                                            <li className="child__li"><h3>Pages</h3></li>
+                                                                            <li className="child__li"><Link to="/"><span>About us</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Contact Us</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Designers</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>FAQ</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Terms & Condititons</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Returns & Exchanges</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Shipping & Delivery</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Privacy Policy</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Shortcode Page</span></Link></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </Grid>
+                                                                <Grid xs={4}>
+                                                                    <div className="cart__item">
+                                                                        <ul className="child__ul">
+                                                                            <li className="child__li"><h3>Header</h3></li>
+                                                                            <li className="child__li">
+                                                                                <Link to="/">
+                                                                                    <span>Header Design 1</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className="child__li">
+                                                                                <Link to="/">
+                                                                                    <span>Header Design 2</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className="child__li">
+                                                                                <Link to="/">
+                                                                                    <span>Header Design 3</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className="child__li">
+                                                                                <Link to="/">
+                                                                                    <span>Header Design 4
+                                                                                        <span className="new">
+                                                                                            <span className="txt__new">
+                                                                                                new
+                                                                                            </span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className="child__li">
+                                                                                <Link to="/">
+                                                                                    <span>Header Transparent</span>
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className="child__li"><Link to="/"><span>Vertical Menu</span></Link></li>
+
+                                                                        </ul>
+                                                                    </div>
+
+                                                                </Grid>
+                                                                <Grid xs={4}>
+                                                                    <div className="cart__item">
+                                                                        <ul className="child__ul">
+                                                                            <li className="child__li"><h3>Shop</h3></li>
+                                                                            <li className="child__li"><Link to="/"><span><BsFillCartFill className='icon basket__icon' />Shopping Cart</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span><FaUserAlt className="icon user__icon" />Home FullWidth</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Track Order </span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>Password Page</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>404 Not Found</span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>With Product Listing </span></Link></li>
+                                                                            <li className="child__li"><Link to="/"><span>With Instagram Shop </span></Link></li>
+                                                                            <li className="child__li">
+                                                                                <Link to="/">
+                                                                                    <span>With Lookbook
+                                                                                        <span className="hot">
+                                                                                            <span className="txt__hot">
+                                                                                                hot
+                                                                                            </span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li className="child__li"><Link to="/"><span>With Gallery</span></Link></li>
+
+
+                                                                        </ul>
+                                                                    </div>
+
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Stack>
                                                     </div>
                                                 )}
                                             </li>
