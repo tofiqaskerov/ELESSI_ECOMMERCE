@@ -1,0 +1,120 @@
+@use '../../Assets/scss/main.scss'as *;
+
+.cart__sidebar{
+    width: 400px;
+    height: 100vh;
+    background: var(--white-cl);
+    position: fixed;
+    top: 0;
+    right: -300px;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    z-index: 999;
+    transition: .3s ease;
+ 
+    opacity: 0;
+    visibility: hidden;
+    .content__cart {
+        .content__all__cart {
+            display: flex;
+            flex-direction: column;
+
+            .head {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 18px 0px ;
+                border-bottom: 1px solid rgb(190, 190, 190);
+                h2 {
+                    font-size: 16px;
+                    height: 40px;
+                    display: flex;
+                    min-width: 240px;
+                    cursor: pointer;
+                    letter-spacing: .3px;
+                    text-transform: uppercase;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    font-weight: 800;
+                    color: gray;
+                    letter-spacing: 1.5px;
+
+                    &.active {
+                        background: #83b828;
+                        color: #fff;
+                    }
+                }
+                button{
+                    outline: none;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    .close__btn__icon{
+                        font-size: 18px;
+                    }
+                }
+                
+            }
+            .product__list{
+                padding: 40px 0px;
+                text-align: center;
+            }
+            .list__mobile {
+                .main__ul {
+                    padding: 20px;
+                    list-style: none;
+
+                    .main__li {
+                        padding: 10px;
+                        border-bottom: 1px solid rgb(190, 190, 190);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        cursor: pointer;
+
+                        &:hover {
+                            a {
+                                color: steelblue;
+
+                            }
+                        }
+
+                        a {
+                            color: #000;
+                            font-size: 1.2rem;
+                            transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+                            .icon {
+                                line-height: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.overlay__cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+    background: rgba(0, 0, 0, .7);
+}
+.activeOverlayCart{
+    display: none;
+}
+.active__sidebar__cart{
+    opacity: 1;
+    visibility: visible;
+    right: 0%;
+}
+// @include minRsp(1024px){
+//     .overlay{
+//         display: none;
+//     }
+// }

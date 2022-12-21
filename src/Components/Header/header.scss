@@ -12,7 +12,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-
+            width: 100%;
             @include rsp(768px) {
                 justify-content: center;
             }
@@ -127,7 +127,9 @@
     .main__header {
         .container {
             position: relative;
-
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             .burger__icon__side {
                 font-size: 20px;
                 line-height: 80px;
@@ -175,7 +177,6 @@
 
             .navbar {
                 line-height: 80px;
-
                 @include rsp(1024px) {
                     display: none;
                 }
@@ -268,11 +269,19 @@
                     .item {
                         font-size: 20px;
                         padding-right: 20px;
-
+                        @include rsp(736px){
+                            &:nth-last-child(even){
+                                display: none;
+                            }
+                        }
                         .icon {
                             cursor: pointer;
                         }
-
+                        button{
+                            outline: none;
+                            border: none;
+                            background: none;
+                        }
                         &:nth-last-child(-n+2) {
                             position: relative;
 

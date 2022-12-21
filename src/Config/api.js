@@ -1,0 +1,1 @@
+export const BASE_URL = " http://askerov10-001-site1.btempurl.com/api"

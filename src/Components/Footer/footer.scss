@@ -1,0 +1,103 @@
+#footer {
+    padding: 80px 0px 50px 0px;
+
+    .footer__up {
+        .box {
+            img {
+                max-width: 106px;
+                min-width: 96px;
+            }
+           
+            .icons {
+                align-items: center;
+                justify-content: start;
+
+                i {
+                    padding: 5px;
+                    margin-left: 5px;
+                    border-radius: 50px;
+                    color: #8f8f8f;
+                    background: #e9e9e9;
+                    transition: .3s ease;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: white;
+
+                        &:nth-child(1) {
+                            background-color: var(--facebook-cl);
+                        }
+
+                        &:nth-child(2) {
+                            background-color: var(--twitter-cl);
+                        }
+
+                        &:nth-child(3) {
+                            background-color: var(--google-cl);
+                        }
+
+                        &:nth-child(4) {
+                            background-color: var(--pinterest-cl);
+                        }
+
+                        &:nth-child(5) {
+                            background-color: var(--instagram-cl);
+                        }
+                    }
+                }
+            }
+
+            h1 {
+                font-weight: 800;
+            }
+
+            .subscribe__content {
+                display: flex;
+                align-items: center;
+
+                h1 {
+                    font-size: 26px;
+                    margin-right: 10px;
+                }
+
+                .subscribe__input {
+                    margin-right: 5px;
+                    border: 1px solid gray;
+                    outline: none;
+                    padding: 0.75em;
+                    height: 40px;
+                    max-width: 100%;
+                    width: 100%;
+                    background: #fff;
+                    transition: color .3s, border .1s;
+
+                    &:focus {
+                        border: 1px solid rgb(73, 73, 73);
+                    }
+                }
+
+                .input__btn {
+                    .subscribe__btn {
+                        display: inline-block;
+                        background-color: #f76b6a;
+                        color: #fff;
+                        text-transform: uppercase;
+                        font-size: .97em;
+                        touch-action: none;
+                        cursor: pointer;
+                        font-weight: bolder;
+                        text-align: center;
+                        text-decoration: none;
+                        border: 1px solid transparent;
+                        text-shadow: none;
+                        line-height: 37px;
+                        min-height: 37px;
+                        padding: 0 1.2em;
+                        max-width: 100%;
+                    }
+                }
+
+            }
+        }
+    }
+}

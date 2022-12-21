@@ -1,0 +1,106 @@
+@use '../../Assets/scss/main.scss'as *;
+
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background: var(--white-cl);
+    position: fixed;
+    top: 0;
+    left: -300px;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    z-index: 999;
+    transition: .3s ease;
+    @include minRsp(1024px) {
+        display: none;
+    }
+    opacity: 0;
+    visibility: hidden;
+    .content {
+        .content__all {
+            display: flex;
+            flex-direction: column;
+
+            .tab {
+                display: flex;
+                align-items: stretch;
+
+                h3 {
+                    flex: 1 0 50%;
+                    font-size: 16px;
+                    height: 40px;
+                    display: flex;
+                    cursor: pointer;
+                    letter-spacing: .3px;
+                    text-transform: uppercase;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    font-weight: 800;
+                    color: gray;
+
+                    &.active {
+                        background: #83b828;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .list__mobile {
+                .main__ul {
+                    padding: 20px;
+                    list-style: none;
+
+                    .main__li {
+                        padding: 10px;
+                        border-bottom: 1px solid rgb(190, 190, 190);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        cursor: pointer;
+
+                        &:hover {
+                            a {
+                                color: steelblue;
+
+                            }
+                        }
+
+                        a {
+                            color: #000;
+                            font-size: 1.2rem;
+                            transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+                            .icon {
+                                line-height: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+    background: rgba(0, 0, 0, .7);
+}
+.activeOverlay{
+    display: none;
+}
+.active__sidebar__navbar{
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+}
+@include minRsp(1024px){
+    .overlay{
+        display: none;
+    }
+}

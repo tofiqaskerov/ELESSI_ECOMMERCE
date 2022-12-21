@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Stack } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './header.scss'
 import Logo from '../../Assets/Img/bike-logo-retina_500x.webp'
@@ -15,7 +15,23 @@ import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import HeaderSidebar from '../HeaderSidebar/HeaderSidebar'
+import CartSidebar from '../CartSidebar/CartSidebar'
 function Header() {
+    const [isOpen, setIsOpen] = useState(false)
+    const [isOpenCart, setIsOpenCart] = useState(false)
+    const handleOpenCart = () => {
+        setIsOpenCart(true)
+    }
+    const handleCloseCart = () => {
+        setIsOpenCart(false)
+    }
+    const handleOpen = () => {
+        setIsOpen(true)
+    }
+    const handleClose = () => {
+        setIsOpen(false)
+    }
     const navbar = [
         {
 
@@ -41,42 +57,42 @@ function Header() {
         },
     ]
     return (
-        <header id='header'>
+        <>
+            <header id='header'>
 
-            {/* Upper - header */}
-            <div className="upper__header">
-                <div className="overlay"></div>
-                <Container className='container' maxWidth="xxl">
-                    <div className="contact">
-                        <ul className='main_ul' >
-                            <li className='main_li'><Link to="/"><i class="ri-facebook-fill"></i></Link></li>
-                            <li className='main_li'><Link to="/"><i class="ri-twitter-fill"></i></Link></li>
-                            <li className='main_li'><Link to="/"><i class="ri-google-fill"></i></Link></li>
-                            <li className='main_li'><Link to="/"><i class="ri-pinterest-fill"></i></Link></li>
-                            <li className='main_li'><Link to="/"><i class="ri-instagram-line"></i></Link></li>
-                            <li className='main_li'><Link to="/"><span>Call:  +01 23456789 </span></Link></li>
-                        </ul>
-                    </div>
-                    <div className="content">
-                        <span >USD <i class="ri-arrow-down-s-line"></i>
-                            <ul className='select'>
-                                <li className='li'>EUR</li>
-                                <li className='active-cl li'>USD</li>
-                                <li className='li'>GBP</li>
+                {/* Upper - header */}
+                <div className="upper__header">
+                    <Container className='container' maxWidth="xxl">
+                        <div className="contact">
+                            <ul className='main_ul' >
+                                <li className='main_li'><Link to="/"><i className="ri-facebook-fill"></i></Link></li>
+                                <li className='main_li'><Link to="/"><i className="ri-twitter-fill"></i></Link></li>
+                                <li className='main_li'><Link to="/"><i className="ri-google-fill"></i></Link></li>
+                                <li className='main_li'><Link to="/"><i className="ri-pinterest-fill"></i></Link></li>
+                                <li className='main_li'><Link to="/"><i className="ri-instagram-line"></i></Link></li>
+                                <li className='main_li'><Link to="/"><span>Call:  +01 23456789 </span></Link></li>
                             </ul>
-                        </span>
-                    </div>
+                        </div>
+                        <div className="content">
+                            <span >USD <i className="ri-arrow-down-s-line"></i>
+                                <ul className='select'>
+                                    <li className='li'>EUR</li>
+                                    <li className='active-cl li'>USD</li>
+                                    <li className='li'>GBP</li>
+                                </ul>
+                            </span>
+                        </div>
 
-                </Container>
-            </div>
-            {/* main - header */}
-            <div className="main__header">
-                <Container maxWidth="xxl" className='container' >
-                    <Stack direction={{ sm: "row" }} alignItems="center" justifyContent="space-between" >
+                    </Container>
+                </div>
+                {/* main - header */}
+                <div className="main__header">
+                    <Container maxWidth="xxl" className='container' >
                         <div className="burger__icon__side">
                             <Stack direction={"row"} spacing={1}>
-                                <div className="burger__icon">
+                                <div className="burger__icon" onClick={handleOpen}>
                                     <i class="ri-menu-2-line"></i>
+
                                 </div>
                                 <div className="search__icon">
                                     <CiSearch />
@@ -548,7 +564,10 @@ function Header() {
                                     <li className='item'><CiHeart className='favourite__icon icon' />
                                         <span className='badge'>0</span>
                                     </li>
-                                    <li className='item'><SlBasket className='checkout__icon icon' />
+                                    <li className='item'>
+                                        <button onClick={handleOpenCart}>
+                                            <SlBasket className='checkout__icon icon' />
+                                        </button>
                                         <span className='badge'>0</span>
 
                                     </li>
@@ -556,12 +575,14 @@ function Header() {
 
                             </ul>
                         </div>
-                    </Stack>
 
+                    </Container>
+                </div>
+            </header>
+            <HeaderSidebar navMenuItem={navbar} open={isOpen} close={handleClose} />
+            <CartSidebar open={isOpenCart} close={handleCloseCart} />
+        </>
 
-                </Container>
-            </div>
-        </header>
     )
 }
 
