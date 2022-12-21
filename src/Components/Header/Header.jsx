@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Stack } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './header.scss'
 import Logo from '../../Assets/Img/bike-logo-retina_500x.webp'
@@ -32,6 +32,24 @@ function Header() {
     const handleClose = () => {
         setIsOpen(false)
     }
+    const headerRef = useRef(null);
+    const stickyHeader = () => {
+        window.addEventListener("scroll", () => {
+            if (
+                document.body.scrollTop > 80 || document.documentElement.scrollTop > 150
+            ) {
+                headerRef.current.classList.add("sticky__header")
+            }
+            else {
+                headerRef.current.classList.remove("sticky__header")
+            }
+        })
+
+    };
+    useEffect(() =>{
+        stickyHeader()
+        return () => window.removeEventListener("scroll", stickyHeader)
+    })
     const navbar = [
         {
 
@@ -86,7 +104,7 @@ function Header() {
                     </Container>
                 </div>
                 {/* main - header */}
-                <div className="main__header">
+                <div className="main__header" ref={headerRef}>
                     <Container maxWidth="xxl" className='container' >
                         <div className="burger__icon__side">
                             <Stack direction={"row"} spacing={1}>
