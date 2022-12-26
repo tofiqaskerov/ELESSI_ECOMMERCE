@@ -36,7 +36,7 @@ function Header() {
     const stickyHeader = () => {
         window.addEventListener("scroll", () => {
             if (
-                document.body.scrollTop > 80 || document.documentElement.scrollTop > 150
+                document.body.scrollTop > 50 || document.documentElement.scrollTop > 150
             ) {
                 headerRef.current.classList.add("sticky__header")
             }
@@ -600,7 +600,7 @@ function Header() {
             <HeaderSidebar navMenuItem={navbar} open={isOpen} close={handleClose} />
             <CartSidebar open={isOpenCart} close={handleCloseCart} />
         </>
-
+  
     )
 }
 

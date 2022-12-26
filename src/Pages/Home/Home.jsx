@@ -1,11 +1,14 @@
-import React from 'react'
-import BannerImg from '../../Assets/Img/bike-slide1.webp'
+import React from "react";
+import Helmet from "../../Components/Helmet/Helmet";
+import Slider from "../../Components/Slider/Slider";
 function Home() {
   return (
-    <div>
-      <img style={{width: "100%",}} src={BannerImg} alt="" />
-    </div>
-  )
+    <Helmet title={"Home Page"}>
+       <section className="home">
+         <Slider/>
+       </section>
+    </Helmet>
+  );
 }
 
-export default Home
+export default Home;

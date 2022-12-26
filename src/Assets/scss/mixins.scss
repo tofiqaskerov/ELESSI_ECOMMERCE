@@ -10,7 +10,7 @@
     }
 }
 
-@mixin betweenRsp($min-width, $max-width) {
+@mixin btwRsp($min-width, $max-width) {
     @media (min-width:$min-width) and (max-width:$max-width) {
         @content;
     }
@@ -175,7 +175,7 @@
 }
 
 @mixin pages__menu{
-    width: 650px;
+    width: 550px;
     position: absolute;
     top: 100;
     transform: translateY(100px);
@@ -184,9 +184,10 @@
     transition: .3s ease;
     background: #fff;
     @include cart__item__style;
-    @include rsp(1372px){
-        width: 550px;
+    @include btwRsp(1020px, 1200px){
+        left: 43%;
     }
+   
     .all{
         padding: 20px;
     }

@@ -1,7 +1,15 @@
+@use '../../Assets/scss/main.scss' as *;
+
 #footer {
-    padding: 80px 0px 50px 0px;
+    padding: 80px 0px 0px 0px;
 
     .footer__up {
+       width: 70%;
+       margin: auto;
+       @include rsp(1400px){
+        width: 90%;
+        margin: auto;
+       }
         .box {
             img {
                 max-width: 106px;
@@ -51,53 +59,106 @@
                 font-weight: 800;
             }
 
-            .subscribe__content {
-                display: flex;
-                align-items: center;
-
+      
+                
+              
                 h1 {
-                    font-size: 26px;
-                    margin-right: 10px;
+                    font-size: 24px;
+                    margin-right: 50px;
+                    font-family: "Nunito Sans", sans-serif;
                 }
-
-                .subscribe__input {
-                    margin-right: 5px;
-                    border: 1px solid gray;
-                    outline: none;
-                    padding: 0.75em;
-                    height: 40px;
-                    max-width: 100%;
-                    width: 100%;
-                    background: #fff;
-                    transition: color .3s, border .1s;
-
-                    &:focus {
-                        border: 1px solid rgb(73, 73, 73);
-                    }
-                }
-
-                .input__btn {
-                    .subscribe__btn {
-                        display: inline-block;
-                        background-color: #f76b6a;
-                        color: #fff;
-                        text-transform: uppercase;
-                        font-size: .97em;
-                        touch-action: none;
-                        cursor: pointer;
-                        font-weight: bolder;
-                        text-align: center;
-                        text-decoration: none;
-                        border: 1px solid transparent;
-                        text-shadow: none;
-                        line-height: 37px;
-                        min-height: 37px;
-                        padding: 0 1.2em;
+                .input__content{
+                    display: flex;
+                    align-items: center;
+                    .subscribe__input {
+                        margin-right: 5px;
+                        border: 1px solid gray;
+                        outline: none;
+                        padding: 0.75em;
+                        height: 40px;
                         max-width: 100%;
+                        width: 100%;
+                        background: #fff;
+                        transition: color .3s, border .1s;
+    
+                        &:focus {
+                            border: 1px solid rgb(73, 73, 73);
+                        }
+                    }
+    
+                    .input__btn {
+                        .subscribe__btn {
+                            display: inline-block;
+                            background-color: var(--badge-cl);
+                            color: #fff;
+                            text-transform: uppercase;
+                            font-size: .97em;
+                            touch-action: none;
+                            cursor: pointer;
+                            font-weight: bolder;
+                            text-align: center;
+                            text-decoration: none;
+                            border: 1px solid transparent;
+                            text-shadow: none;
+                            line-height: 37px;
+                            min-height: 37px;
+                            padding: 0 1.2em;
+                            max-width: 100%;
+                        }
                     }
                 }
+               
 
+            
+            .main__ul{
+                list-style: none;
+                .main__li{
+                    padding: 6px 0;
+                    &.date{
+                        border-bottom: 1px solid rgb(185, 185, 185);
+                    }
+                    &.date{
+                        span{
+                            display: inline-block;
+                            width: 50%;
+                        }
+                    }
+                    &.payment{
+                        margin-top: 10px;
+                        text-align: right;
+                    }
+                 
+                    .date__time__week{
+                        text-align: left;
+                    }
+                    .date__time__day{
+                        text-align: right;
+                    }
+                    span{
+                        color: rgb(124, 124, 124);
+                        transition: .3s ease;
+
+                    }
+                    a{
+                        &:hover{
+                            span{
+                            color: var(--select-cl);
+
+                            }
+                        }
+                    }
+                    .payment{
+                        display: flex;
+                        align-items: center;
+                        list-style: none;
+                        justify-content: end;
+                        .payment__item{
+
+                        }
+                    }
+                }
             }
         }
+
     }
 }

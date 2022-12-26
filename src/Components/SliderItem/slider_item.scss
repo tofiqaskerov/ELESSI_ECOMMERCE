@@ -1,0 +1,64 @@
+@use '../../Assets/scss/main.scss'as *;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&display=swap');
+
+.banner {
+    font-family: "Nunito Sans", sans-serif;
+
+    .data__banner {
+        height: 638px;
+
+        .content {
+            position: absolute;
+            top: 48%;
+            left: 0%;
+            width: 100%;
+
+            .all__content {
+                .title {
+                    font-size: 16px;
+                    letter-spacing: 10px;
+                    color: #757575;
+                    font-weight: 900;
+                    text-transform: uppercase;
+
+                }
+
+                .subtitle {
+                    font-size: 55px;
+                    color: #333333;
+                    font-weight: 900;
+                    display: block;
+                    margin-bottom: 20px;
+                }
+
+                .shop__btn {
+
+
+                    display: inline-block;
+                    background-color:#83B828;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    text-align: center;
+                    text-decoration: none;
+                    border: 1px solid transparent;
+                    text-shadow: none;
+                    line-height: 37px;
+                    min-height: 37px;
+                    padding: 0 2.5em;
+                    letter-spacing: 2px;
+                    max-width: 100%;
+                    cursor: pointer;
+
+
+                }
+
+                &.data__position {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

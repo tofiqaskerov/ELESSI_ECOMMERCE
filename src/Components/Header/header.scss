@@ -129,8 +129,8 @@
         &.sticky__header {
             width: 100%;
             position: fixed;
-            top: 0%;
-            left: 0%;
+            top: 0;
+            left: 0;
             z-index: 999;
             transition: .5s ease;
             
@@ -202,7 +202,7 @@
                         font-family: 'Nunito Sans', sans-serif;
                         font-weight: 900;
                         font-size: 12px;
-
+                        
                         &:hover {
                             a {
                                 color: var(--select-cl);

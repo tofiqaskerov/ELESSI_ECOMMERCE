@@ -7,7 +7,9 @@ function App() {
   return (
     <>
     <Header/>
-    <Routers/>
+     <main>
+       <Routers/>
+     </main>
     <Footer/>
     </>
   );
