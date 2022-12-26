@@ -69,6 +69,7 @@
     opacity: 0;
     transition: .3s ease;
     background: #fff;
+    z-index: 999;
     .all {
         padding: 20px;
         @include cart__item__style;
@@ -85,6 +86,7 @@
     visibility: hidden;
     opacity: 0;
     transition: .3s ease;
+    z-index: 999;
     .cart__item {
         padding: 20px 0px;
         .child__ul {
@@ -182,6 +184,7 @@
     visibility: hidden;
     opacity: 0;
     transition: .3s ease;
+    z-index: 999;
     background: #fff;
     @include cart__item__style;
     @include btwRsp(1020px, 1200px){
@@ -196,6 +199,7 @@
 @mixin big__menu__shop {
     width: 100%;
     position: absolute;
+    z-index: 999;
     top: 100;
     left: 0;
     background: #fff;
@@ -255,6 +259,7 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    
 }
 
 @mixin cart__item__style {
