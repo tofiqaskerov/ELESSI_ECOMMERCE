@@ -249,8 +249,8 @@
     }
 
     .right__side {
-        .box {
-            border: 1px solid red;
+        .contain {
+           position: relative;
         }
     }
 }

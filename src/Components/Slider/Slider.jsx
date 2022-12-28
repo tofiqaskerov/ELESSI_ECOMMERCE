@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./slider.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, EffectFade, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, EffectFade, A11y, Autoplay } from 'swiper';
 import BannerImg from "../../Assets/Img/bike-slide1.webp";
 import { Container } from "@mui/material";
 import { BASE_URL } from "../../Config/api";
@@ -22,15 +22,14 @@ function Slider() {
     <>
       
       <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination,EffectFade, A11y]}
+      modules={[Navigation, Pagination,EffectFade,Autoplay, A11y]}
       spaceBetween={50}
       slidesPerView={1}
       pagination={{ clickable: true, }}
       navigation={true}
       effect="fade"
       fadeEffect= {{crossFade: true}}
-     className="swiper"
+      className="swiper"
       onSlideChange={() => console.log('slide change')}
     >
        {sliderItem?.map((item, index) => (

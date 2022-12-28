@@ -4,17 +4,20 @@ import { Link } from "react-router-dom";
 import "./slider_item.scss";
 import { motion } from "framer-motion";
 function SliderItem({ position, title, subtitle, img }) {
+  const bannerImg = {
+    background: `url(${img})`,
+    maxHeight: "638px"
+  };
+
   return (
     <>
       <div className="banner">
         <div className="data__banner">
-          <img src={img} alt="banner__image" />
-          <div className="content">
-            <Container>
-              {position % 2 === 0 ? (
-                <div className="all__content">
-                  <Grid container>
-                    <Grid xs={12}>
+          {position % 2 === 0 ? (
+            <Link to="/">
+              <div className="all__content" style={bannerImg} >
+                <Container>
+                    <Grid className="left__side" xs={12}>
                       <motion.h1
                         initial={{
                           x: 40,
@@ -57,7 +60,7 @@ function SliderItem({ position, title, subtitle, img }) {
                           opacity: 1,
                         }}
                         transition={{
-                          duration: 1.1,
+                          duration: 1,
                         }}
                         to="/"
                         className="shop__btn"
@@ -65,12 +68,14 @@ function SliderItem({ position, title, subtitle, img }) {
                         Shop Now
                       </motion.a>
                     </Grid>
-                  </Grid>
-                </div>
-              ) : (
-                <div className="all__content data__position">
-                  <Grid container>
-                    <Grid xs={12}>
+                </Container>
+              </div>
+            </Link>
+          ) : (
+            <Link to="/">
+              <div className="all__content data__position" style={bannerImg}>
+                <Container>
+                    <Grid className="right__side" xs={12}>
                       <motion.h1
                         initial={{
                           x: -40,
@@ -121,11 +126,10 @@ function SliderItem({ position, title, subtitle, img }) {
                         Shop Now
                       </motion.a>
                     </Grid>
-                  </Grid>
-                </div>
-              )}
-            </Container>
-          </div>
+                </Container>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
     </>

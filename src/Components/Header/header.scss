@@ -203,8 +203,8 @@
                         font-weight: 900;
                         font-size: 12px;
                         
-                        &:hover {
-                            a {
+                        &:hover{
+                            a:not(.info__side .title a)  {
                                 color: var(--select-cl);
 
                             }
