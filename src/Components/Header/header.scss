@@ -126,13 +126,13 @@
 
     .main__header {
         background: #fff;
+        width: 100%;
+
         &.sticky__header {
-            width: 100%;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 999;
-            transition: .5s ease;
             
     
         }
@@ -203,8 +203,8 @@
                         font-weight: 900;
                         font-size: 12px;
                         
-                        &:hover{
-                            a:not(.info__side .title a)  {
+                        &:hover {
+                            a:not(.slider__item a) {
                                 color: var(--select-cl);
 
                             }

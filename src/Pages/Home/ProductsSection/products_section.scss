@@ -1,0 +1,30 @@
+.products{
+    padding: 50px 0;
+    .head__title{
+        margin-bottom: 30px;
+        .title{
+            font-size: 30px;
+            color: #000;
+            font-weight: 900;
+        }
+    }
+    .categories{
+        .main__ul{
+            list-style: none;
+            .child__li{
+                a{
+                    text-transform: uppercase;
+                    color: rgb(214, 214, 214);
+                    font-weight: 900;
+                    &.nav__active{
+                        color: #000;
+                    }
+                }
+               
+            }
+        }
+    }
+    .all__products{
+        padding-top: 30px;
+    }
+}

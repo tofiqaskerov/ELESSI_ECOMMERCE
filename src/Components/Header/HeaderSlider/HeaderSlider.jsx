@@ -17,7 +17,7 @@ function HeaderSwiper() {
         {
            headerData?.map((item, index) =>(
               <SwiperSlide className="swiper__slide" key={index}>
-                 <HeaderSliderItem img={item.coverPhoto} hoverImage={item.images} name={item.name} price={item.price}  />
+                 <HeaderSliderItem img={item.coverPhoto} hoverImage={item.images} name={item.name} price={item.price} stock={item.stock}  />
               </SwiperSlide>
            ))
         }

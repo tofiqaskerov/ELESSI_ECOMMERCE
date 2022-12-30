@@ -1,0 +1,202 @@
+@use '../../../Assets/scss/main.scss' as *;
+.shopify {
+    padding: 20px 0;
+
+    .left__content {
+        .left__content__item__1 {
+            height: 100%;
+
+        }
+    }
+    .right__content{
+        @include rsp(900px){
+            padding-left: 0 !important;
+        }
+    }
+    .box {
+        overflow: hidden;
+        position: relative;
+
+        a {
+            img {
+                transition: .7s ease;
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+
+            .overlay__item {
+                position: absolute;
+                z-index: 100;
+                width: 100%;
+
+            }
+
+            .overlay__item__1 {
+                top: 10%;
+                left: 0;
+                text-align: right;
+                padding: 0 50px 0 0;
+
+                .title {
+                    font-size: 1.8rem;
+                    color: var(--badge-cl);
+                    font-weight: 800;
+                    padding-bottom: 10px;
+                   
+                }
+
+                .sale__off {
+                    color: rgb(204, 203, 203);
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                }
+            }
+
+            .overlay__item__2 {
+                left: 0;
+                top: 10%;
+                padding-left: 50px;
+                .title {
+                    color: #000;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    @include rsp(500px){
+                        font-size: 1.3rem;
+                    }
+                }
+    
+                .sale__off {
+                    color: rgb(204, 203, 203);
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                }
+            }
+            .overlay__item__3{
+                top: 45%;
+                text-align: right;
+                padding: 0 50px 0 0;
+                .title{
+                    font-size: 1.8rem;
+                    font-weight: 800;
+                    color: #000;
+                    @include rsp(500px){
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+
+            
+
+        }
+    }
+
+    // .left__content {
+
+    //     width: 536px;
+    //     position: relative;
+
+    //     a {
+
+
+    //         &:hover {
+    //             img {
+    //                 transform: scale(1.1);
+    //             }
+
+
+    //         }
+
+    //         .overlay__item {
+    //             z-index: 100;
+    //             position: absolute;
+    //             width: 100%;
+    //             text-align: right;
+    //             padding: 0px 50px;
+    //             left: 0;
+    //             top: 10%;
+    //             font-family: 'Nunito Sans', sans-serif;
+
+    //             .title {
+    //                 font-size: 1.8rem;
+    //                 color: var(--badge-cl);
+    //                 font-weight: 800;
+    //                 padding-bottom: 10px;
+    //             }
+
+    //             .sale__off {
+    //                 color: rgb(204, 203, 203);
+    //                 font-size: 1.6rem;
+    //                 font-weight: 600;
+    //             }
+
+
+    //         }
+    //     }
+
+
+
+    // }
+
+    // .right__content {
+
+    //     &.box {
+
+    //         margin-bottom: 10px;
+    //         position: relative;
+
+    //         &:hover {
+    //             img {
+    //                 transform: scale(1.1);
+    //             }
+    //         }
+
+    //         .overlay__item2 {
+
+    //             z-index: 100;
+    //             position: absolute;
+    //             width: 100%;
+    //             left: 0;
+    //             top: 10%;
+    //             padding-left: 50px;
+    //             font-family: 'Nunito Sans', sans-serif;
+
+    //             .title {
+    //                 color: #000;
+    //                 font-size: 1.8rem;
+    //                 font-weight: 600;
+
+    //             }
+
+    //             .sale__off {
+    //                 color: rgb(204, 203, 203);
+    //                 font-size: 1.3rem;
+    //                 font-weight: 600;
+    //             }
+    //         }
+    //         .overlay__item3{
+    //             @extend .overlay__item;
+    //             top: 50%;
+
+    //         }
+    //     }
+    // }
+
+    // .box {
+    //     overflow: hidden;
+    // }
+
+    // img {
+    //     transition: transform .8s ease;
+    //     width: 100%;
+    //     height: 100%;
+    // }
+
+
+
+}

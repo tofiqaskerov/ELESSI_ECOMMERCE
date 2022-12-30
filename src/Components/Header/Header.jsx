@@ -152,7 +152,7 @@ function Header() {
                           {item.catItem}
                           <MdKeyboardArrowDown className="downArrow__icon" />
                           {item.badge != null && (
-                            <div className={`badge__shop`}>{item.badge}</div>
+                            <div className="badge__shop">{item.badge}</div>
                           )}
                         </Link>
                         {/* Home menu */}
