@@ -6,33 +6,26 @@ import BannerImg from "../../Assets/Img/bike-slide1.webp";
 import { Container } from "@mui/material";
 import { BASE_URL } from "../../Config/api";
 import SliderItem from "../SliderItem/SliderItem";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
-function Slider() {
-  const [sliderItem, setSliderItem] = useState([]);
-  useEffect(() => {
-    fetch(`${BASE_URL}/slider/getall`)
-      .then((res) => res.json())
-      .then((data) => setSliderItem(data.data));
-  }, []);
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+function Slider({data}) {
+
   return (
     <>
       
       <Swiper
-      modules={[Navigation, Pagination,EffectFade,Autoplay, A11y]}
-      spaceBetween={50}
-      slidesPerView={1}
-      pagination={{ clickable: true, }}
-      navigation={true}
-      effect="fade"
-      fadeEffect= {{crossFade: true}}
-      className="swiper"
-      onSlideChange={() => console.log('slide change')}
+      spaceBetween={30}
+        effect={"fade"}
+        navigation={true}
+        pagination={{clickable: true,}}
+        modules={[EffectFade, Navigation, Pagination]}
+        className="mySwiper"
     >
-       {sliderItem?.map((item, index) => (
+       {data?.map((item, index) => (
           <SwiperSlide className="swiper__slide" key={index}>
              <SliderItem   position={index} title={item.title} subtitle={item.subtitle} img={item.photoUrl} />
           </SwiperSlide>

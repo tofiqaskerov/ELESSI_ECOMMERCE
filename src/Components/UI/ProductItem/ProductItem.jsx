@@ -18,11 +18,11 @@ function ProductItem({ item }) {
       lg={3}
       xl={3}
       xxl={3}
-      style={{ paddingTop: "0", marginBottom: "20px" }}
+      style={{ paddingTop: "0", marginBottom: "20px", }}
       item
     >
       <div className="img__side">
-        <Link to={`/shop/${id}`}>
+        <Link to={`/detail/${id}`}>
           <img
             className="cover__photo"
             src={coverPhoto}
@@ -38,7 +38,7 @@ function ProductItem({ item }) {
         </div>
       </div>
       <div className="info__side">
-        <Link className="slider__info"  to={`/shop/${id}`}  >
+        <Link className="slider__info"  to={`/detail/${id}`}  >
           <h3 className="title">{title}</h3>
         </Link>
         {discount !== null ? (

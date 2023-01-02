@@ -1,0 +1,23 @@
+
+.swiper-slide{
+    opacity: .2;
+    transition: .2s ease;
+    &.swiper-slide-active{
+        opacity: 1;
+        .product__slider__item{
+            .info__side{
+                opacity:1;
+                visibility: visible;
+                
+            }
+        }
+    }
+    .product__slider__item{
+        .info__side{
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s ease-in-out;
+
+        }
+    }
+}

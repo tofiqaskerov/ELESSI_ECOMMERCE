@@ -1,0 +1,121 @@
+.blog__item {
+    transition: .3s ease;
+    
+    &:hover {
+      box-shadow: 0 0 4px rgb(0 0 0 / 20%);
+
+        .img__side {
+            img {
+                transform: scale(1.2);
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    .img__side {
+        overflow: hidden;
+        
+        img {
+            transition: .9s ease;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .info__side {
+        padding: 20px;
+        border-right: 1px solid rgb(221, 220, 220);
+        border-left: 1px solid rgb(221, 220, 220);
+        border-bottom: 1px solid rgb(221, 220, 220);
+        max-height: 200px;
+        .category {
+            .slider__info {
+
+                color: rgb(199, 198, 198);
+                transition: .2s ease;
+
+
+                &:hover {
+
+                    color: #000;
+
+
+                }
+
+
+            }
+        }
+
+
+        .title {
+            padding-top: 12px;
+
+
+            a {
+                color: #000;
+                transition: .2s ease;
+
+                &:hover {
+                    color: var(--select-cl);
+                }
+            }
+        }
+        .posted__time{
+            color: rgb(212, 212, 212);
+            display: inline-block;
+            padding-top: 10px ;
+            span{
+                color: rgb(36, 36, 36);
+            }
+        }
+        .read__more{
+            padding-top: 14px ;
+            .read__more__link{
+                display: flex;
+                align-items: center;
+                &:hover{
+                    span{
+                        color: var(--select-cl);
+                    }
+                }
+                .book__icon{
+                    margin-right: 10px;
+                    color: gray;
+                }
+                span{
+                    transition: .3s ease;
+                    color: rgb(68, 68, 68);
+                }
+            }
+          
+        }
+    }
+}
+
+.blog__swiper:hover {
+    .swiper-button-next,.swiper-button-prev{
+        opacity: 1 !important;
+        visibility: visible !important;
+        
+    }
+    .swiper-button-next{
+        right: 5px !important;
+        
+    }
+    .swiper-button-prev{
+        left: 5px !important;
+    }
+    
+}
+
+.blog__swiper{
+    .swiper-button-prev {
+        left: 20px !important;
+    }
+    
+    .swiper-button-next {
+        right: 20px !important;
+    }
+}
+

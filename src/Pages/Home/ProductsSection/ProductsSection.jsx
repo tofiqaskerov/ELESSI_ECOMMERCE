@@ -1,46 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Tab, Tabs, Typography } from "@mui/material";
 import "./products_section.scss";
 import { Link, NavLink } from "react-router-dom";
 import ProductList from "../../../Components/UI/ProductList/ProductList";
 import { BASE_URL } from "../../../Config/api";
-function ProductsSection() {
-  const handleFilter = (i) => {
-    switch (i) {
-      case 1:
-        console.log(i);
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      default:
-        break;
-    }
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
-  const categories = [
-    {
-        id:1,
-      display: "New Arrivals",
-    },
-    {
-        id:2,
-      display: "Featured",
-    },
-    {
-        id:3,
-      display: "Best Seller",
-    },
-    {
-        id:4,
-      display: "On Sale",
-    },
-  ];
-  const [products, setIsProducts] = useState([])
-  useEffect(() =>{
-    fetch(`${BASE_URL}/product/getall`).then(res => res.json()).then(data => setIsProducts(data.data) )
-  }, [])
-  console.log(products);
+}
+function ProductsSection({ product }) {
+  const [value, setValue] = useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    console.log(event);
+  };
   return (
     <section className="products">
       <Container maxWidth="lg">
@@ -49,23 +45,37 @@ function ProductsSection() {
             <h1 className="title">Our Products</h1>
           </div>
           <div className="categories">
-            <ul className="main__ul">
-              <Grid container columnGap={8} justifyContent={"center"}>
-                {categories?.map((item, index) => (
-                  <li
-                    className="child__li"
-                    key={index}
-                    onClick={handleFilter(item.id)}
-                  >
-                    <Link>{item.display}</Link>
-                  </li>
-                ))}
-              </Grid>
-            </ul>
+            <Box sx={{ width: "100%" }}>
+              <Box>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="basic tabs example"
+                  className="tabs"
+                >
+                  
+                    <Tab label="NEW ARRIVALS" {...a11yProps(0)} />
+                    <Tab label="FEATURED" {...a11yProps(1)} />
+                    <Tab label="BEST SELLER" {...a11yProps(2)} />
+                    <Tab label="ON SALE " {...a11yProps(3)} />
+ 
+                </Tabs>
+              </Box>
+              <TabPanel value={value} index={0}>
+                <ProductList data={product} />
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                <ProductList data={product} />
+              </TabPanel>
+              <TabPanel value={value} index={2}>
+                <h1>Empty</h1>
+              </TabPanel>
+              <TabPanel value={value} index={3}>
+                <ProductList data={product} />
+              </TabPanel>
+            </Box>
           </div>
-          <div className="all__products">
-            <ProductList data={products} />
-          </div>
+        
         </Grid>
       </Container>
     </section>
