@@ -134,7 +134,7 @@
             top: 0;
             left: 0;
             z-index: 400;
-
+            
 
         }
 
@@ -330,7 +330,7 @@
                                     transition: 1s ease;
                                     animation: badges__shake infinite;
                                     animation-duration: 3s;
-                                    animation-delay: 5s;
+                                    animation-delay: 1s;
 
                                     @keyframes badges__shake {
                                         0% {

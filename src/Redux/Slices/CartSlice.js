@@ -8,6 +8,7 @@ const initialState = {
 }
 
 
+
 const cartSlice = createSlice({
     name : "cart",
     initialState,
@@ -24,6 +25,7 @@ const cartSlice = createSlice({
                 state.cartItems.push(tempProduct)
             }
             state.cartTotalQuantity++
+            console.log(state.cartItems);
             localStorage.setItem("cartTotalQuantity", JSON.stringify(state.cartTotalQuantity))
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
@@ -45,24 +47,41 @@ const cartSlice = createSlice({
             localStorage.setItem("cartTotalQuantity", JSON.stringify(state.cartTotalQuantity))
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
-        totalPrice(state){
-            let {total, quantity} = state.cartItems.reduce((totalCart, cartItem) =>{
-                const {price, cartQuantity} = cartItem;
-                const itemTotal = price * cartQuantity;
-                totalCart.total +=itemTotal
-                totalCart.quantity += cartQuantity
+        clearCart(state, action){
+            const id = action.payload.id
+            const selectedProduct = state.cartItems.filter(item => item.id === id ) 
 
-                return totalCart
+            selectedProduct 
+            ? state.cartItems = state.cartItems.filter(item => item.id !== id)
+            : state.cartTotalQuantity = state.cartTotalQuantity - selectedProduct.cartQuantity
+
+            state.cartTotalQuantity--
+
+            localStorage.setItem("cartTotalQuantity", JSON.stringify(state.cartTotalQuantity))
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+
+        },
+        totalPrice(state){
+            let { total, quantity } = state.cartItems.reduce(
+            (cartTotal, cartItem) => {
+              const { price, cartQuantity } = cartItem;
+              const itemTotal = price * cartQuantity;
+    
+              cartTotal.total += itemTotal;
+              cartTotal.quantity += cartQuantity;
+    
+              return cartTotal;
             },
             {
-                total:0,
-                quantity:0
-            } );
-
-            state.cartTotalQuantity = quantity;
-            state.cartTotalAmount = total            
+              total: 0,
+              quantity: 0,
+            }
+        );
+         total = parseFloat(total.toFixed(2));
+         state.cartTotalQuantity = quantity;
+         state.cartTotalAmount = total;           
         }
     }
 })
-export const {addToCart,decreaseCart,removeFromCart} = cartSlice.actions
+export const {addToCart,decreaseCart,removeFromCart,clearCart, totalPrice} = cartSlice.actions
 export default cartSlice.reducer
