@@ -7,8 +7,16 @@ import {
   AiOutlineEye,
 } from "react-icons/ai";
 import "./product_item.scss";
+import { useDispatch } from "react-redux";
+import { openCart } from "../../../Redux/Slices/HeaderSlice";
+import { addToCart } from "../../../Redux/Slices/CartSlice";
 function ProductItem({ item }) {
   const { title, price, discount, coverPhoto, productPictures, id } = item;
+  const dispatch = useDispatch();
+  function handleAddToCart(item){
+      dispatch(openCart())
+      dispatch(addToCart(item))
+  }
   return (
     <Grid
       className="product__item"
@@ -29,10 +37,10 @@ function ProductItem({ item }) {
             alt=""
             style={{ width: "100%" }}
           />
-          {/* <img className="hover__img" src={productPictures[0]} alt="" />  */}
+          <img className="hover__img" src={productPictures[0]} alt="" /> 
         </Link>
         <div className="shop__icon__side">
-          <Link className="shop__icon__link">
+          <Link className="shop__icon__link"  onClick={ () => handleAddToCart(item)}>
             <AiOutlineShopping className="shop__icon" />
           </Link>
         </div>
@@ -50,20 +58,13 @@ function ProductItem({ item }) {
           <span className="price">${price}</span>
         )}
       </div>
-      {/* {discount !== null ? (
-        <div className="discount__info__side">
-          <span className="discount__info">{discount} %</span>
-        </div>
-      ) : (
-        <></>
-      )} */}
       <div className="favourite__icon__side">
         <Link className="heart__icon__link" to="/">
           <AiOutlineHeart className="heart__icon" />
         </Link>
       </div>
       <div className="detail__icon__side">
-        <Link className="detail__icon__link">
+        <Link className="detail__icon__link"  >
           <AiOutlineEye className="preview__icon" />
         </Link>
       </div>

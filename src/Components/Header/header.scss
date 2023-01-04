@@ -13,6 +13,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
+
             @include rsp(768px) {
                 justify-content: center;
             }
@@ -132,15 +133,17 @@
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 999;
-            
-    
+            z-index: 400;
+
+
         }
+
         .container {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             .burger__icon__side {
                 font-size: 20px;
                 line-height: 80px;
@@ -188,6 +191,7 @@
 
             .navbar {
                 line-height: 80px;
+
                 @include rsp(1024px) {
                     display: none;
                 }
@@ -202,22 +206,26 @@
                         font-family: 'Nunito Sans', sans-serif;
                         font-weight: 900;
                         font-size: 12px;
-                        
+
                         &:hover {
                             a:not(.slider__item a) {
                                 color: var(--select-cl);
 
                             }
+
                             .big__menu__home {
                                 @include big__menu__active;
                             }
+
                             .big__menu__shop {
                                 @include big__menu__active;
                             }
-                            .blog__menu{
+
+                            .blog__menu {
                                 @include big__menu__active;
                             }
-                            .pages__menu{
+
+                            .pages__menu {
                                 @include big__menu__active;
                             }
                         }
@@ -249,22 +257,24 @@
                             }
 
                         }
+
                         // Home big menu
                         .big__menu__home {
                             @include big__menu__home;
                         }
 
                         // Shop big menu
-                        .big__menu__shop {  
-                           @include  big__menu__shop;
+                        .big__menu__shop {
+                            @include big__menu__shop;
                         }
+
                         // Blog menu
-                        .blog__menu{
+                        .blog__menu {
                             @include blog__menu;
                         }
-                        
+
                         // Pages menu
-                        .pages__menu{
+                        .pages__menu {
                             @include pages__menu;
                         }
 
@@ -280,19 +290,27 @@
                     .item {
                         font-size: 20px;
                         padding-right: 20px;
-                        @include rsp(736px){
-                            &:nth-last-child(even){
+
+                        @include rsp(736px) {
+                            &:nth-last-child(even) {
                                 display: none;
                             }
                         }
+
+                        .search__icon {
+                            font-size: 20px;
+                        }
+
                         .icon {
                             cursor: pointer;
                         }
-                        button{
+
+                        button {
                             outline: none;
                             border: none;
                             background: none;
                         }
+
                         &:nth-last-child(-n+2) {
                             position: relative;
 
@@ -307,6 +325,25 @@
                                 border-radius: 100%;
                                 background-color: var(--badge-cl);
                                 color: #fff;
+
+                                &.animation__badge {
+                                    transition: 1s ease;
+                                    animation: badges__shake infinite;
+                                    animation-duration: 3s;
+                                    animation-delay: 5s;
+
+                                    @keyframes badges__shake {
+                                        0% {
+                                            transform: translateY(0px);
+                                        }
+                                        50%{
+                                            transform: translateY(-5px);
+                                        }
+                                        100% {
+                                            transform: translateY(0px);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

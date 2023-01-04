@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.scss";
 import Logo from "../../Assets/Img/bike-logo-retina_500x.webp";
-import BigMenuImg from "../../Assets/Img/Sample_Product_Image8-21_360x.webp";
 import { CiSearch, CiHeart, CiUser } from "react-icons/ci";
 import { AiOutlineCar } from "react-icons/ai";
 import { SlBasket } from "react-icons/sl";
@@ -13,27 +12,18 @@ import { IoHelpBuoyOutline } from "react-icons/io5";
 import { CgKeyhole } from "react-icons/cg";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import HeaderSidebar from "../HeaderSidebar/HeaderSidebar";
 import CartSidebar from "../CartSidebar/CartSidebar";
-import SliderItem from "../SliderItem/SliderItem";
 import HeaderSwiper from "./HeaderSlider/HeaderSlider";
+import SearchModal from "../SearchModal/SearchModal";
+import { useDispatch, useSelector } from "react-redux";
+import {openCart, openSearchModal, openSidebar} from '../../Redux/Slices/HeaderSlice'
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenCart, setIsOpenCart] = useState(false);
-  const handleOpenCart = () => {
-    setIsOpenCart(true);
-  };
-  const handleCloseCart = () => {
-    setIsOpenCart(false);
-  };
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
+  const handleOpenSearchModal = () => dispatch(openSearchModal())
+  const handleOpenSidebar = () => dispatch(openSidebar())
+  const handleOpenCart = () => dispatch(openCart())
   const headerRef = useRef(null);
   const stickyHeader = () => {
     window.addEventListener("scroll", () => {
@@ -129,7 +119,7 @@ function Header() {
           <Container maxWidth="xxl" className="container">
             <div className="burger__icon__side">
               <Stack direction={"row"} spacing={1}>
-                <div className="burger__icon" onClick={handleOpen}>
+                <div className="burger__icon" onClick={handleOpenSidebar}>
                   <i class="ri-menu-2-line"></i>
                 </div>
                 <div className="search__icon">
@@ -760,7 +750,7 @@ function Header() {
                                   className="right__side"
                                   xs={3}
                                 >
-                                   <HeaderSwiper/>
+                                  <HeaderSwiper />
                                 </Grid>
                               </Grid>
                             </Container>
@@ -1019,7 +1009,9 @@ function Header() {
               <ul className="items">
                 <Stack direction="row">
                   <li className="item">
-                    <CiSearch className="search__icon icon" />
+                    <button  onClick={handleOpenSearchModal}>
+                      <CiSearch className="search__icon icon" />
+                    </button>
                   </li>
                   <li className="item">
                     <CiUser className="user__icon icon" />
@@ -1032,7 +1024,8 @@ function Header() {
                     <button onClick={handleOpenCart}>
                       <SlBasket className="checkout__icon icon" />
                     </button>
-                    <span className="badge">0</span>
+                    
+                    <span className={cart.cartTotalQuantity > 0 ? "badge animation__badge" : "badge" }>{cart.cartTotalQuantity}</span>
                   </li>
                 </Stack>
               </ul>
@@ -1040,8 +1033,9 @@ function Header() {
           </Container>
         </div>
       </header>
-      <HeaderSidebar navMenuItem={navbar} open={isOpen} close={handleClose} />
-      <CartSidebar open={isOpenCart} close={handleCloseCart} />
+      <HeaderSidebar navMenuItem={navbar}  />
+      <CartSidebar  />
+      <SearchModal />
     </>
   );
 }

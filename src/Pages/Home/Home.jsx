@@ -3,6 +3,7 @@ import Helmet from "../../Components/Helmet/Helmet";
 import Slider from "../../Components/Slider/Slider";
 import { BASE_URL } from "../../Config/api";
 import BlogSection from "./BlogSection/BlogSection";
+import BrandSection from "./BrandSection/BrandSection";
 import EquimentSection from "./EquimentSection/EquimentSection";
 import ProductsSection from "./ProductsSection/ProductsSection";
 import ProductSliderSection from "./ProductsSliderSection/ProductSliderSection";
@@ -33,6 +34,7 @@ function Home() {
          <ProductSliderSection product={products} />
          <EquimentSection product={products}/>
          <BlogSection blog={blogs} />
+         <BrandSection/>
        </section>
     </Helmet>
   );

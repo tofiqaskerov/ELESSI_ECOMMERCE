@@ -1,6 +1,6 @@
 @use '../../Assets/scss/main.scss'as *;
 
-.cart__sidebar{
+.cart__sidebar {
     width: 400px;
     height: 100vh;
     background: var(--white-cl);
@@ -13,6 +13,7 @@
     transition: .3s ease;
     opacity: 0;
     visibility: hidden;
+
     .content__cart {
         .content__all__cart {
             display: flex;
@@ -22,8 +23,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 18px 0px ;
+                padding: 18px 0px;
                 border-bottom: 1px solid rgb(190, 190, 190);
+
                 h2 {
                     font-size: 16px;
                     height: 40px;
@@ -44,52 +46,95 @@
                         color: #fff;
                     }
                 }
-                button{
+
+                button {
                     outline: none;
                     border: none;
                     background: none;
                     cursor: pointer;
-                    .close__btn__icon{
+
+                    .close__btn__icon {
                         font-size: 18px;
                     }
                 }
-                
+
             }
-            .product__list{
-                padding: 40px 0px;
+
+            .product__list {
+                padding: 40px 30px;
                 text-align: center;
-            }
-            .list__mobile {
-                .main__ul {
-                    padding: 20px;
-                    list-style: none;
+                display: flex;
+                flex-direction: column;
+                .item__content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    column-gap: 2rem;
+                    margin-top: 10px;
+                    a {
+                        width: 20%;
 
-                    .main__li {
-                        padding: 10px;
-                        border-bottom: 1px solid rgb(190, 190, 190);
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        cursor: pointer;
+                        img {
+                            width: 100%;
+                            border-radius: 50%;
 
-                        &:hover {
-                            a {
-                                color: steelblue;
-
-                            }
-                        }
-
-                        a {
-                            color: #000;
-                            font-size: 1.2rem;
-                            transition: cubic-bezier(0.165, 0.84, 0.44, 1);
-                            .icon {
-                                line-height: 5px;
-                            }
                         }
                     }
+
+                    .item__content__title__side {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+
+                        .info {
+                            text-align: left;
+                            display: flex;
+                            flex-direction: column;
+                            .title {
+                                margin-bottom: 10px;
+                                color: #000;
+                            }
+
+                            .price {
+                                color: gray;
+                            }
+                        }
+                        .count__side{
+                            .quantity__box{
+                                display: inline-flex;
+                                vertical-align: top;
+                                border: 1px solid #e0e0e0;
+                                background-color: #f9f9f9;
+                                box-shadow: 0 0 5px rgb(0 0 0 / 8%);
+                                .count__number{
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 10px 15px;
+                                }
+                                .action{
+                                    display: flex;
+                                    flex-direction: column;
+                                    .minus, .plus{
+                                        border: none;
+                                        padding: 5px;
+                                        cursor: pointer;
+                                        background: #ECECEC;
+                                        font-weight: 700;
+                                        &:hover{
+                                            background-color: rgb(209, 209, 209);
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+
+                    }
+
                 }
             }
+
+        
         }
     }
 
@@ -104,14 +149,17 @@
     z-index: 900;
     background: rgba(0, 0, 0, .7);
 }
-.activeOverlayCart{
+
+.activeOverlayCart {
     display: none;
 }
-.active__sidebar__cart{
+
+.active__sidebar__cart {
     opacity: 1;
     visibility: visible;
     right: 0%;
 }
+
 // @include minRsp(1024px){
 //     .overlay{
 //         display: none;

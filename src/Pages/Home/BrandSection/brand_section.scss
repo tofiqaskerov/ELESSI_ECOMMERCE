@@ -1,0 +1,10 @@
+.brand{
+    padding: 20px 0;
+    .brand__swiper__slide{
+        transition: none;
+        opacity : 1;
+        &:hover{
+            opacity: .6;
+        }
+    }
+}

@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './headerSidebar.scss'
 import { MdArrowRight } from "react-icons/md"
-function HeaderSidebar( props ) {
-    const {navMenuItem, open, close} = props
- 
+import { useDispatch, useSelector } from 'react-redux'
+import { closeSidebar } from '../../Redux/Slices/HeaderSlice'
+function HeaderSidebar( {navMenuItem} ) {
+    const header = useSelector(state => state.header)
+    const dispatch  = useDispatch()
+    const handleCloseSidebar = () => dispatch(closeSidebar())
     return (
         <>
-            <div className={open ? "active__sidebar__navbar sidebar":"sidebar"}>
+            <div className={header.sidebarOpen ? "active__sidebar__navbar sidebar":"sidebar"}>
                 <div className="content">
                     <div className="content__all">
                         <div className="tab">
@@ -27,7 +30,7 @@ function HeaderSidebar( props ) {
                     </div>
                 </div>
             </div>
-            <div  className={open ?" overlay": "activeOverlay"} onClick={close}></div>
+            <div  className={header.sidebarOpen?" overlay": "activeOverlay"} onClick={handleCloseSidebar}></div>
         </>
 
     )

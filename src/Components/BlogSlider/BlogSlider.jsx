@@ -11,6 +11,7 @@ function BlogSlider({data}) {
       slidesPerView={3}
       navigation={true}
       spaceBetween={30}
+      loop
       pagination={{ clickable: true }}
       modules={[Navigation]}
       className="blog__swiper"
