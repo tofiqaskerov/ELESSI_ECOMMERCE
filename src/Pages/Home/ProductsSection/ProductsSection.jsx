@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Box, Container, Grid, Tab, Tabs, Typography } from "@mui/material";
 import "./products_section.scss";
-import { Link, NavLink } from "react-router-dom";
 import ProductList from "../../../Components/UI/ProductList/ProductList";
-import { BASE_URL } from "../../../Config/api";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -24,14 +22,18 @@ function TabPanel(props) {
     </div>
   );
 }
-
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-function ProductsSection({ product }) {
+function ProductsSection({product}) {
+  // const dispatch = useDispatch()
+  // const product = useSelector(state => state.products.products)
+  // useEffect(() =>{
+  //   dispatch(fetchProducts())
+  // }, [dispatch])
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);

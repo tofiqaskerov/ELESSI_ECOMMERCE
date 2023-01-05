@@ -11,11 +11,9 @@ function ProductSlider({data}) {
         <Swiper
         slidesPerView={2}
         centeredSlides={true}
-        
         loop={true}
         modules={[Pagination]}
         className="mySwiper"
-       
       >
         {
             data?.map((item, index) => (
