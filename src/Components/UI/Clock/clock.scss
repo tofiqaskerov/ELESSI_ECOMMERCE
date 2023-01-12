@@ -1,0 +1,24 @@
+.time__side{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    div{
+        background: #95BF47;
+        color: #fff;
+        text-transform: uppercase;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        span{
+            &:nth-child(1){
+                margin-bottom:5px;
+            }
+            &:nth-child(2){
+                font-size: 12px;
+            }
+        }
+    }
+}

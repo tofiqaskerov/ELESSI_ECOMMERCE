@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import GoToTop from "../../Components/GoToTop/GoToTop";
 import Helmet from "../../Components/Helmet/Helmet";
 import Slider from "../../Components/Slider/Slider";
 import { fetchBlogs } from "../../Redux/Slices/Blog/BlogSlice";
@@ -31,6 +32,7 @@ function Home() {
          <EquimentSection product={products}/>
          <BlogSection blog={blogs} />
          <BrandSection/>
+         <GoToTop/>
        </section>
     </Helmet>
   );

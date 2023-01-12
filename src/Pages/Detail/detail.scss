@@ -1,0 +1,239 @@
+.detail {
+    .detail__side {
+        padding-top: 50px;
+
+        .product__img__side {
+            .box {
+                overflow: hidden;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    transform-origin: center;
+                    max-width: none;
+                    max-height: none;
+                    cursor: pointer;
+                }
+
+            }
+        }
+
+        .product__info__side {
+
+            .title {
+                font-size: 30px;
+                margin-bottom: 5px;
+                font-family: 'Nunito Sans', sans-serif;
+
+            }
+
+            .sold__info {
+                color: #000;
+                font-weight: 500;
+
+                .total__day,
+                .hour {
+                    font-size: 16px;
+                    color: #dd1e31;
+                    font-weight: 800;
+                    margin-right: 10px;
+                }
+
+                .hour {
+                    margin-left: 5px;
+                }
+
+            }
+
+            .price {
+                margin: 20px 0;
+                font-weight: 900;
+                font-size: 28px;
+                color: #555555;
+                font-family: 'Nunito Sans', sans-serif;
+            }
+
+            .description {
+                margin-bottom: 20px;
+            }
+
+            .stock {
+                margin-bottom: 20px;
+
+                .stock__info {
+                    text-transform: uppercase;
+                    font-family: 'Nunito Sans', sans-serif;
+                    font-weight: 600;
+                    color: #555555;
+                    margin-bottom: 10px;
+
+                    span {
+                        color: rgb(247, 107, 106);
+
+                        font-weight: 700;
+                    }
+
+                }
+
+                .progress__bar {
+                    background: #ffe8e8;
+                    border: 0 solid #f5f5f5;
+                    height: 11px;
+                    position: relative;
+                    display: block;
+                    margin-bottom: 15px;
+                    box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+
+                    div {
+                        width: 18.3333%;
+                        background-color: #f76b6a !important;
+                        transition: .9s linear;
+                        transition-property: width, background-color;
+                        background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
+                        background-size: 40px 40px;
+
+                        height: 11px;
+                        animation: 2s linear 0s normal none infinite running progress-bar-stripes;
+
+                    }
+                }
+            }
+
+            h5 {
+                text-transform: uppercase;
+                margin-bottom: 8px;
+                font-family: 'Nunito Sans', sans-serif;
+
+            }
+
+            .easter__egg {
+                font-family: 'Nunito Sans', sans-serif;
+                font-weight: 700;
+                margin-top: 10px;
+            }
+
+            .addToCart__side {
+                display: flex;
+                flex-direction: column;
+                margin-top: 20px;
+
+                .count__addToCart {
+                    column-gap: 1.5rem;
+                    display: flex;
+                    align-items: center;
+
+                    .count__btn {
+                        display: flex;
+                        align-items: center;
+                        border: 1px solid #e0e0e0;
+                        font-size: 20px;
+                        box-shadow: 0 0 5px rgb(0 0 0 / 8%);
+
+                        .btn {
+                            padding: 1px 5px;
+                            background-color: #f9f9f9;
+                            border: none;
+                            cursor: pointer;
+                            min-width: 25px;
+                            border-radius: 0;
+                            outline: none;
+                            min-width: 25px;
+                            padding: 20px 5px;
+                            font-weight: 800;
+                            color: #848484;
+                        }
+
+                        .minus {
+                            border-right: 1px solid #e0e0e0;
+
+                        }
+
+                        .plus {
+                            border-left: 1px solid #e0e0e0;
+
+                        }
+
+                        span {
+                            padding: 15px 15px;
+                        }
+                    }
+
+                    .addToCart {
+                        .addToCart__btn {
+                            width: 100%;
+                            padding: 20px 70px;
+                            outline: none;
+                            border: none;
+                            text-transform: uppercase;
+                            color: #fff;
+                            font-weight: 700;
+                            transition: .3s ease;
+                            cursor: pointer;
+                            background: #83b828;
+                            font-family: 'Nunito Sans', sans-serif;
+
+                            &:hover {
+                                background: #838282;
+                            }
+                        }
+
+                    }
+                }
+
+                p {
+                    width: 340px;
+                    text-align: center;
+                    margin: 10px 0;
+                }
+
+                .checkout {
+                    .checkout__btn {
+                        width: 348px;
+                        background: #000 ;
+                        color: #fff;
+                        outline: none;
+                        border: none;
+                        height: 50px;
+                        line-height: 24px;
+                        font-weight: 700;
+                        font-family: 'Nunito Sans', sans-serif;
+                        cursor: pointer;
+                        &:hover{
+                            background: #4C4C4C;
+                        }
+
+                    }
+                }
+
+            }
+            .product__delivery{
+                font-family: 'Nunito Sans', sans-serif;
+                font-weight: 800;
+                margin-top: 10px;
+                span{
+                    color: #83b828;
+                    &:nth-child(2){
+                        text-decoration: underline;
+                        color: #000;
+                    }
+                }
+            }
+            .real__time__visitor{
+                margin-top: 10px;
+                span{
+                    span{
+                        color: rgb(255, 255, 255);
+                        background-color: #83b828;
+                        font-weight: 700;
+                        padding: 0px 5px;
+
+                    }
+                }
+            }
+
+
+        }
+    }
+
+}

@@ -1,22 +1,116 @@
-.common__section{
+@use '../../Assets/scss/main.scss' as *;
+
+.common__section {
     width: 100%;
     background: #F6F6F8;
-    .all{
+    @include rsp(768px){
+        display: none;
+    }
+    .all {
         justify-content: space-between;
         align-items: center;
-        padding: 20px 0;
-        .breadcrumb{
+        position: relative;
+
+        .breadcrumb {
             align-items: center;
-            a{
+
+            a {
                 color: #000;
                 margin-right: 5px;
-                &:nth-last-child(1){
+
+                &:nth-last-child(1) {
                     color: #c9c9c9;
                 }
             }
         }
+
+        .back__next__icon {
+            display: flex;
+            column-gap: 1rem;
+
+
+            .next__button, .prev__button  {
+               padding: 20px 10px;
+                background: none;
+                outline: none;
+                border: none;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                position: relative;
+                transition: .3s ease;
+                .icon__link{
+                    color: #000;
+                }
+                &:hover {
+                    color: gray;
+                    .product__info {
+                        transform: translate(0);
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+            
+
+            .product__info {
+                box-shadow: -3px 3px 8px -1px rgba(207, 193, 193, 0.75);
+                position: absolute;
+                opacity: 0;
+                visibility: hidden;
+                top: 100%;
+                right: 0px;
+                min-width: 280px;
+                background: #FFFFFF;
+                padding: 8px;
+                text-align: right;
+                transform: translateX(-50px);
+                transition: .3s ease;
+
+                a:has(img) {
+                    float: right;
+
+                    img {
+                        height: 55px;
+                        margin-left: 10px;
+                    }
+                }
+
+                a:has(span) {
+                    margin-bottom: 7px;
+                    display: inline-block;
+                    font-weight: 800;
+
+                }
+
+                span {
+                    display: block;
+                   
+                }
+                .old__price{
+                    color: red;
+                }
+                .title__link{
+                    color: #000;
+                }
+                .old__price__del{
+                    color: gray;
+                    font-weight: 400;
+                    margin-right: 5px;
+                }
+
+            }
+            .prev__product__info{
+                text-align: left;
+            }
+            .next__product__info{
+                text-align: right;
+            }
+        }
     }
 }
-.d-flex{
+
+.d-flex {
     display: flex;
 }
