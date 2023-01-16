@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logDOM } from "@testing-library/react";
 
 
 const initialState = {
@@ -14,18 +15,20 @@ const cartSlice = createSlice({
     initialState,
     reducers:{
         addToCart(state, action){
+          
+
             const itemIndex = state.cartItems.findIndex(i => i.id === action.payload.id);
+            const numDetail = action.payload.numDetail
             if(itemIndex >= 0){
-               state.cartItems[itemIndex].cartQuantity++
+                numDetail !== undefined ? state.cartItems[itemIndex].cartQuantity += numDetail : state.cartItems[itemIndex].cartQuantity +=1
             }else{
                 const tempProduct = {
                     ...action.payload,
-                    cartQuantity: 1 
+                    cartQuantity:  numDetail === undefined ? 1 :  0 + numDetail 
                 }
                 state.cartItems.push(tempProduct)
             }
             state.cartTotalQuantity++
-            console.log(state.cartItems);
             localStorage.setItem("cartTotalQuantity", JSON.stringify(state.cartTotalQuantity))
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
@@ -35,13 +38,20 @@ const cartSlice = createSlice({
             localStorage.setItem("cartItem", JSON.stringify(state.cartItems))
         },
         decreaseCart(state, action){
+            console.log(action);
             const itemIndex =  state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id)
             if(state.cartItems[itemIndex].cartQuantity > 1){
                 state.cartItems[itemIndex].cartQuantity -=1
-              
-            }else if(state.cartItems[itemIndex].cartQuantity === 1){
-                const nextCartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
-                state.cartItems = nextCartItems;
+                console.log(state.cartItems[itemIndex].cartQuantity);
+            }
+                else if(state.cartItems[itemIndex].cartQuantity === 1){
+                    const nextCartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
+                    console.log(nextCartItems);
+                    state.cartItems = nextCartItems;
+                }
+
+            else if(state.cartItems[itemIndex].cartQuantity === null){
+                state.cartItems = state.cartItems[itemIndex].cartQuantity = 0
             }
             state.cartTotalQuantity--
             localStorage.setItem("cartTotalQuantity", JSON.stringify(state.cartTotalQuantity))
@@ -83,5 +93,5 @@ const cartSlice = createSlice({
         }
     }
 })
-export const {addToCart,decreaseCart,removeFromCart,clearCart, totalPrice} = cartSlice.actions
+export const {addToCart,decreaseCart,removeFromCart,removeFromDetail,clearCart, totalPrice} = cartSlice.actions
 export default cartSlice.reducer

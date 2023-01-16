@@ -24,6 +24,9 @@ function Slider({data}) {
         pagination={{clickable: true,}}
         modules={[EffectFade, Navigation, Pagination]}
         className="mySwiper"
+        onScroll={() =>{
+          
+        }}
     >
        {data?.map((item, index) => (
           <SwiperSlide className="swiper__slide" key={index}>

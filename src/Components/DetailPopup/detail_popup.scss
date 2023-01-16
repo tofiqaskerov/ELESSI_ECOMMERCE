@@ -1,0 +1,43 @@
+.detail__popup {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    .detail__popup__inner {
+        .head__all {
+            .head__side {
+                width: 100%;
+                color: #fff;
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .activity__side {
+                    .main__ul {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 1.4rem;
+                        list-style: none;
+
+                        .child__li {
+                            cursor: pointer;
+                            font-size: 1.2rem;
+                            color: rgb(218, 216, 216);
+
+                            &:hover {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+
+}

@@ -3,20 +3,77 @@
         padding-top: 50px;
 
         .product__img__side {
-            .box {
-                overflow: hidden;
-                position: relative;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
 
-                img {
-                    width: 100%;
-                    height: auto;
-                    transform-origin: center;
-                    max-width: none;
-                    max-height: none;
-                    cursor: pointer;
+            .box__all {
+                position: relative;
+                .box {
+                    overflow: hidden;
+                    position: relative;
+
+                    &:hover {
+
+                        .overlay__coverPhoto,
+                        .overlay__productPictures {
+                            display: block;
+                        }
+
+                        .detail__img {
+                            opacity: 0;
+                            visibility: hidden;
+                        }
+                    }
+
+                    .detail__img {
+                        width: 100%;
+                        height: auto;
+                        cursor: pointer;
+                        display: block;
+
+                    }
+
+                    .overlay__img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 1000px;
+                        height: 1100px;
+                        max-width: none;
+                        max-height: none;
+                        z-index: -1;
+                        display: none;
+                        transform: translate(-50%, -50%);
+
+                    }
+
+                   
+
+                }
+                .fullscreen {
+                    position: absolute;
+                    top: 10px;
+                    right:10px;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    background: #fff;
+                    padding: 10px;
+                    row-gap: 1.3rem;
+
+                    .fullscreen__icon {
+                        cursor: pointer;
+                    }
+                    .heart__icon{
+                        font-size: 20px;
+                        cursor: pointer;
+                    }
+
                 }
 
             }
+
         }
 
         .product__info__side {
@@ -155,6 +212,7 @@
                         }
 
                         span {
+
                             padding: 15px 15px;
                         }
                     }
@@ -190,7 +248,7 @@
                 .checkout {
                     .checkout__btn {
                         width: 348px;
-                        background: #000 ;
+                        background: #000;
                         color: #fff;
                         outline: none;
                         border: none;
@@ -199,7 +257,8 @@
                         font-weight: 700;
                         font-family: 'Nunito Sans', sans-serif;
                         cursor: pointer;
-                        &:hover{
+
+                        &:hover {
                             background: #4C4C4C;
                         }
 
@@ -207,27 +266,72 @@
                 }
 
             }
-            .product__delivery{
+
+            .product__delivery {
                 font-family: 'Nunito Sans', sans-serif;
                 font-weight: 800;
                 margin-top: 10px;
-                span{
+
+                span {
                     color: #83b828;
-                    &:nth-child(2){
+
+                    &:nth-child(2) {
                         text-decoration: underline;
                         color: #000;
                     }
                 }
             }
-            .real__time__visitor{
+
+            .real__time__visitor {
                 margin-top: 10px;
-                span{
-                    span{
+
+                span {
+                    span {
                         color: rgb(255, 255, 255);
                         background-color: #83b828;
                         font-weight: 700;
                         padding: 0px 5px;
 
+                    }
+                }
+            }
+
+            .guaranteed {
+
+                margin-top: 20px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid rgb(224, 224, 224);
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .share {
+                display: flex;
+                align-items: center;
+                column-gap: 5rem;
+                margin-top: 20px;
+
+                .icon__ul {
+                    display: flex;
+                    list-style: none;
+                    column-gap: .5rem;
+
+                    .icon__li {
+                        &:hover {
+                            a {
+                                color: #83b828;
+                            }
+                        }
+
+                        a {
+                            font-size: 20px;
+                            height: 20px;
+                            display: inline-block;
+                            color: gray;
+                            transition: .3s ease;
+                        }
                     }
                 }
             }
