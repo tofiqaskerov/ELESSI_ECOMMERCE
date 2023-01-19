@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
 import "./slider.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, EffectFade, A11y, Autoplay } from 'swiper';
-import BannerImg from "../../Assets/Img/bike-slide1.webp";
-import { Container } from "@mui/material";
-import { BASE_URL } from "../../Config/api";
+import { Navigation, Pagination,  EffectFade,   } from 'swiper';
 import SliderItem from "../SliderItem/SliderItem";
 
 import "swiper/css";

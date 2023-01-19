@@ -1,8 +1,7 @@
-import { Grid, Pagination } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductItem from "../UI/ProductItem/ProductItem";
-import ProductList from "../UI/ProductList/ProductList";
 import "./equiment_slider.scss";
 import "swiper/css";
 import "swiper/css/pagination";

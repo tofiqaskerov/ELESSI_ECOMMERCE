@@ -2,20 +2,29 @@ import { Container } from "@mui/material";
 import React from "react";
 import "./detail_popup.scss";
 import { AiOutlineZoomIn } from "react-icons/ai";
-import { RiFullscreenLine, RiShareForwardFill } from "react-icons/ri";
+import { RiFullscreenLine, RiShareForwardFill, RiFullscreenExitFill } from "react-icons/ri";
 import { MdClose } from "react-icons/md";
 import DetailPopupSlider from "./DetailPopupSlider/DetailPopupSlider";
 
 function DetailPopup(props) {
 
+  
   const fullScreen = () =>{
+    const body =  document.querySelector("body")
+    const exitIcon = document.querySelector(".exitFullscreen")
+    const fullScreenIcon = document.querySelector(".fullScreen")
     if(!document.fullscreenElement){
-       const body =  document.querySelector("body")
         body.style.overflowY = "hidden"
+        fullScreenIcon.classList.add("active__screen")
+        exitIcon.classList.remove("active__screen")
+        
         document.documentElement.requestFullscreen()
         .catch(error => alert(`Error attempting to enable fullscreen mode: ${error.message} (${error.name})`))
     }else{
         document.exitFullscreen()
+        body.style.overflowY = "auto"
+        fullScreenIcon.classList.remove("active__screen")
+        exitIcon.classList.add("active__screen")
     }   
      
   }
@@ -34,9 +43,11 @@ function DetailPopup(props) {
                   <li className="child__li">
                     <AiOutlineZoomIn />
                   </li>
-                  <li className="child__li fullScreen__icon" onClick={() => fullScreen()} >
-                    <RiFullscreenLine />
+                  <li className="child__li fullScreen__side"   onClick={() => fullScreen()} >
+                    <RiFullscreenLine  className="fullScreen"/>
+                    <RiFullscreenExitFill className="exitFullscreen active__screen " />
                   </li>
+                  
                   <li className="child__li">
                     <RiShareForwardFill />
                   </li> 
@@ -48,7 +59,8 @@ function DetailPopup(props) {
             </div>
           </Container>
         </div>
-        <DetailPopupSlider/>
+        <DetailPopupSlider productImages={props.productImages}  />
+        {/* <div className="footer__all"></div> */}
       </div>
     </div>
   ) : "";

@@ -120,7 +120,7 @@ function Header() {
             <div className="burger__icon__side">
               <Stack direction={"row"} spacing={1}>
                 <div className="burger__icon" onClick={handleOpenSidebar}>
-                  <i class="ri-menu-2-line"></i>
+                  <i className="ri-menu-2-line"></i>
                 </div>
                 <div className="search__icon">
                   <CiSearch />

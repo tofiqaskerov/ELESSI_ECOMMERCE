@@ -1,8 +1,5 @@
 .product__item {
     position: relative;
-    // border: 1px solid red;
-   
-    padding: 0;
     &:hover{
         .detail__icon__side {
             opacity: 1;
@@ -140,7 +137,7 @@
      
         .heart__icon__link {
             position: relative;
-           
+           color: #000;
             &::after {
                 content: 'Login to use Wishlist';
                 text-transform: none;
@@ -230,7 +227,17 @@
         
         }
     }
-    
+    .discount__percent{
+        position: absolute;
+        top: 5%;
+        left: 0;
+        span{
+            background: #83B828;
+            padding: 4px 12px;
+            color: #fff;
+            font-size: 12px;
+        }
+    }
 
     .info__side {
         text-align: left;

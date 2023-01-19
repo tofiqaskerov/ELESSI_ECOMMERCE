@@ -13,10 +13,16 @@ import { addToCart } from "../../../Redux/Slices/CartSlice";
 function ProductItem({ item }) {
   const { title, price, discount, coverPhoto, productPictures, id } = item;
   const dispatch = useDispatch();
-  function handleAddToCart(item){
-      dispatch(openCart())
-      dispatch(addToCart(item))
+  function handleAddToCart(item) {
+    dispatch(openCart());
+    dispatch(addToCart(item));
+    
   }
+  const scrollTo = () =>{
+    window.scrollTo(0, 0)
+  }
+  let discountPercent = (price - discount) * 100 / price;
+  discountPercent = Math.ceil(discountPercent)
   return (
     <Grid
       className="product__item"
@@ -26,33 +32,42 @@ function ProductItem({ item }) {
       lg={3}
       xl={3}
       xxl={3}
-      style={{ paddingTop: "0", marginBottom: "20px", }}
+      style={{ paddingTop: "0", marginBottom: "20px" }}
       item
+      
     >
       <div className="img__side">
-        <Link to={`/detail/${id}`}>
+        <Link to={`/detail/${id}`}  onClick={scrollTo}>
           <img
             className="cover__photo"
             src={coverPhoto}
             alt=""
             style={{ width: "100%" }}
           />
-          <img className="hover__img" src={productPictures[0]} alt="" /> 
+          <img className="hover__img" src={productPictures[0]} alt="" />
         </Link>
         <div className="shop__icon__side">
-          <Link className="shop__icon__link"  onClick={ () => handleAddToCart(item)}>
+          <Link
+            className="shop__icon__link"
+            onClick={() => handleAddToCart(item)}
+          >
             <AiOutlineShopping className="shop__icon" />
           </Link>
         </div>
+        {discount !== null ?(
+          <div className="discount__percent">
+            <span>-{discountPercent}%</span>
+          </div>
+        ) : (<></>)
+      }
       </div>
       <div className="info__side">
-        <Link className="slider__info"  to={`/detail/${id}`}  >
+        <Link className="slider__info" to={`/detail/${id}`} onClick={scrollTo}>
           <h3 className="title">{title}</h3>
         </Link>
         {discount !== null ? (
           <span className="discount">
-            <del className="old__price">${price}</del>
-            ${discount}
+            <del className="old__price">${price}</del>${discount}
           </span>
         ) : (
           <span className="price">${price}</span>
@@ -64,10 +79,11 @@ function ProductItem({ item }) {
         </Link>
       </div>
       <div className="detail__icon__side">
-        <Link className="detail__icon__link"  >
+        <Link className="detail__icon__link">
           <AiOutlineEye className="preview__icon" />
         </Link>
       </div>
+      
     </Grid>
   );
 }

@@ -1,6 +1,36 @@
+@use '../../../Assets/scss/main.scss' as * ;
 .popup__slider{
     height: 100vh;
     align-items: center;
     background: #000;
-   
+    .swiper-button-prev, .swiper-button-next{
+        @include rsp(768px){
+            display: block !important ;
+            background-color: rgb(207, 207, 207) !important;
+            border-radius: 0  !important;
+            font-size: 10px  !important;
+            color: #fff !important;
+            padding: 10px !important;
+            &:hover{
+                background:  rgb(156, 156, 156) !important;
+                color: #fff !important;
+            }
+        }
+    }
+   .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .box{
+        height: 100%;
+        @include rsp(768px){
+            width: 100%;
+            height: 70vh;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+   }
 }

@@ -32,7 +32,7 @@ function Home() {
          <EquimentSection product={products}/>
          <BlogSection blog={blogs} />
          <BrandSection/>
-         <GoToTop/>
+         <GoToTop position={"30px"} opacity={0}/>
        </section>
     </Helmet>
   );

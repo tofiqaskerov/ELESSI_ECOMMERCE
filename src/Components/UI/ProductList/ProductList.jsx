@@ -5,7 +5,7 @@ import "./product_list.scss";
 function ProductList({ data }) {
   return (
     <>
-      <Grid container columnSpacing={2} rowSpacing={2}>
+      <Grid container columnSpacing={2} >
         {data?.map((item, index) => (
           <ProductItem key={index} item={item} />
         ))}

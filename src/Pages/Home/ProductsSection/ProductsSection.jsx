@@ -29,11 +29,7 @@ function a11yProps(index) {
   };
 }
 function ProductsSection({product}) {
-  // const dispatch = useDispatch()
-  // const product = useSelector(state => state.products.products)
-  // useEffect(() =>{
-  //   dispatch(fetchProducts())
-  // }, [dispatch])
+ 
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -76,8 +72,7 @@ function ProductsSection({product}) {
                 <ProductList data={product} />
               </TabPanel>
             </Box>
-          </div>
-        
+          </div> 
         </Grid>
       </Container>
     </section>
