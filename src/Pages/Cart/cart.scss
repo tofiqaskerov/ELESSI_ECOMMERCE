@@ -1,0 +1,82 @@
+@use '../../Assets/scss/main.scss'as *;
+
+.cart {
+    font-family: 'Nunito Sans', sans-serif;
+
+    .head {
+        text-align: center;
+        padding: 63px 0;
+
+        .title {
+            font-size: 50px;
+            font-weight: 800;
+        }
+    }
+
+    .cart__content {
+        .alert{
+            border: 2px solid #E0B252;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            column-gap: 1rem;
+            margin-bottom: 20px;
+            .icon__side{
+                display: flex;
+                align-items: center;
+                .alert__icon{
+                    color: #AF7D27;
+                }
+            }
+            .alert__txt{
+                color: #E0B252;
+                font-size: 16px;
+                font-weight: 600;
+                .minute{
+                    color: #83B828;
+                }
+            }   
+        }
+        .shopify__cart{
+            .product__table{
+                table{
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    width: 100%;
+                    thead{
+                        tr{
+                            th{
+                                text-align: left;
+                                padding: 15px 10px;
+                                color: #1b1919;
+                                vertical-align: middle;
+                                border-bottom: 2px solid #efefef;
+                                text-transform: uppercase;
+                                font-weight: 700;
+                            }
+                            .remove{
+                                font-size: 36px;
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            td{
+                                text-align: left;
+                                border-bottom: 1px solid #e6e6e6;
+                                padding: 15px 12px ;
+                                border: none;
+                                font-size: 28px;
+                                vertical-align: middle;
+                                .close__icon{
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,7 @@
+@use '../../Assets/scss/main.scss'as *;
 
-.login__register__sidebar{
+
+.login__register__sidebar {
     width: 400px;
     height: 100vh;
     background: var(--white-cl);
@@ -10,12 +12,12 @@
     transition: .5s ease-in-out;
     display: flex;
     flex-direction: column;
-    
+
     .head {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 18px 0px;
+        padding: 8px 0px;
         border-bottom: 1px solid rgb(190, 190, 190);
 
         h2 {
@@ -51,89 +53,183 @@
         }
 
     }
-    .form__body{
-        .login__form{
+
+    .form__body {
+        .login__form {
             margin: 20px;
+            padding-bottom: 20px;
             border-bottom: 1px solid #e2e2e2;
-            .login__form__side{
-                .email__password__side{
+
+            .login__form__side {
+                font-family: 'Nunito Sans', sans-serif;
+
+                .login__btn__side {
                     margin-bottom: 20px;
-                    label{
-                        display: inline-block;
-                        font-size: 14px;
-                        color: #1b1919;
-                        font-weight: 400;
-                        margin-bottom: 5px;
-                        span{
-                            color: red;
-                        }
-                    }
-                    .email__password__box{
-                        position: relative;
-                        input{
-                            width: 100%;
-                            height: 40px;
-                            border: 1px solid  rgba(129,129,129,.25);
-                            padding-left: 50px !important;
-                            font-size: 14px;
-                            line-height: 18px;
-                            padding: 0 10px;
-                            transition: .5s ease;
-                            border-radius: 0;
-                            box-shadow: none;
-                            overflow: visible;
-                            outline: none;
-                            &:focus {
-                                border: 1px solid gray;
-                            }
-                            &:focus + .user__icon {
-                                border-right: 1px solid gray;
-                            }
-                            
-                        }
-                        .user__icon{
-                            position: absolute;
-                            width: 50px;
-                            font-size: 30px;
-                            line-height: 38px;
-                            border-right: 1px solid #ccc;
-                            top: 4px;
-                            left: 0;
-                            bottom: 1px;
-                            text-align: center;
-                        }
-                        .hide__show__icon{
-                            position: absolute;
-                            right: 0;
-                            top: 0;
-                            width: 40px;
-                            font-size: 30px;
-                            text-align: center;
-                            line-height: 50px;
-                            display: inline-block;
-                            cursor: pointer;
-                            .hide__icon, .show__icon{
-                                position: relative;
-                                display: inline-block;
-                                
-                            }
-                            .d-none{
-                                display: none;
-                            }
-                            
-                        }
+                    @include login__register__btn;
+                }
+
+                .forgot__side {
+                    margin-bottom: 20px;
+
+                    a {
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        margin-bottom: 10px;
+                        color: #333;
+                        background: transparent;
                     }
                 }
             }
+
+            .form__side {
+                margin-bottom: 20px;
+
+                label {
+                    display: inline-block;
+                    font-size: 14px;
+                    color: #1b1919;
+                    font-weight: 400;
+                    margin-bottom: 5px;
+
+                    .required {
+                        color: red;
+                    }
+                }
+
+                .form__box {
+                    position: relative;
+
+                    input {
+                        width: 100%;
+                        height: 40px;
+                        border: 1px solid rgba(129, 129, 129, .25);
+                        padding-left: 50px !important;
+                        font-size: 14px;
+                        line-height: 18px;
+                        padding: 0 10px;
+                        transition: .5s ease;
+                        border-radius: 0;
+                        box-shadow: none;
+                        overflow: visible;
+                        outline: none;
+
+                        &:focus {
+                            border: 1px solid gray;
+                        }
+
+                        &:focus+.form__icon {
+                            border-right: 1px solid gray;
+                        }
+
+                    }
+
+                    .form__icon {
+                        position: absolute;
+                        width: 50px;
+                        font-size: 30px;
+                        line-height: 38px;
+                        border-right: 1px solid #ccc;
+                        top: 4px;
+                        left: 0;
+                        bottom: 1px;
+                        text-align: center;
+                    }
+
+                    .hide__show__icon {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        width: 40px;
+                        font-size: 30px;
+                        text-align: center;
+                        line-height: 50px;
+                        display: inline-block;
+                        cursor: pointer;
+
+                        .hide__icon,
+                        .show__icon {
+                            position: relative;
+                            display: inline-block;
+                            user-select: none;
+                        }
+
+                       
+
+                    }
+                }
+            }
+
+            .privacy__side {
+                margin-bottom: 20px;
+
+                .privacy__txt {
+                    line-height: 1.5;
+                    font-family: 'Nunito Sans', sans-serif;
+
+                }
+            }
+
+            .register__btn__side {
+                margin-bottom: 20px;
+                @include login__register__btn;
+            }
+
+        }
+
+        .faq__side {
+            margin: 0 20px;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #e2e2e2;
+
+            .faq__icon__side {
+                font-family: 'Nunito Sans', sans-serif;
+                margin-bottom: 10px;
+
+                .faq__icon {
+                    font-size: 50px;
+                    color: rgb(231, 231, 231);
+                }
+            }
+
+            span {
+                font-size: 14px;
+                margin-bottom: 15px;
+                display: inline-block;
+            }
+
+            .register__info {
+                margin-bottom: 20px;
+                font-family: 'Nunito Sans', sans-serif;
+                line-height: 1.5;
+            }
+
+            .btn__link {
+                color: #6d6d6d;
+                border-bottom: 1px solid #b5b5b5;
+                text-align: center;
+                font-size: 14px;
+                transition: .2s ease;
+                padding-bottom: 4px;
+                
+
+                &:hover {
+                    color: #000;
+                    border-color: #000;
+                }
+            }
+
         }
     }
 }
+
 .active__login__register__sidebar {
     opacity: 1;
     visibility: visible;
     right: 0%;
 }
-.overlay__login__register__sidebar{
+
+.overlay__login__register__sidebar {
     position: fixed;
     top: 0;
     right: 0;
@@ -143,7 +239,11 @@
     display: none;
     background: rgba(0, 0, 0, .7);
 }
-.active__overlay__login__register__sidebar{
-display: block;
 
+.active__overlay__login__register__sidebar {
+    display: block;
+
+}
+.d-none {
+    display: none;
 }

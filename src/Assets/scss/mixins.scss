@@ -70,10 +70,12 @@
     transition: .3s ease;
     background: #fff;
     z-index: 999;
+
     .all {
         padding: 20px;
         @include cart__item__style;
     }
+ 
 }
 
 @mixin blog__menu {
@@ -87,8 +89,10 @@
     opacity: 0;
     transition: .3s ease;
     z-index: 999;
+
     .cart__item {
         padding: 20px 0px;
+
         .child__ul {
             list-style: none;
             text-transform: none;
@@ -100,13 +104,15 @@
                 align-items: center;
                 justify-content: space-between;
                 position: relative;
-                &:hover{
-                    .child__ul__item{
+
+                &:hover {
+                    .child__ul__item {
                         opacity: 1;
                         visibility: visible;
                         transform: translateY(-30px);
                     }
                 }
+
                 h3 {
                     color: #000;
                     font-weight: 700;
@@ -120,9 +126,11 @@
 
                 a {
                     cursor: pointer;
+
                     &:hover {
-                        span{
+                        span {
                             color: #000;
+
                             &::before {
                                 opacity: 1;
                                 visibility: visible;
@@ -152,19 +160,22 @@
 
                     }
                 }
-                .rightArrow__icon{
+
+                .rightArrow__icon {
                     cursor: pointer;
                 }
-                .child__ul__item{
+
+                .child__ul__item {
                     position: absolute;
-                    right: -72% ;
+                    right: -72%;
                     list-style: none;
                     top: 100%;
                     transform: translateY(20px);
                     opacity: 0;
                     visibility: hidden;
                     transition: .3s ease;
-                    .child__li__item{
+
+                    .child__li__item {
                         padding: 8px 40px 8px 10px;
                         background: #fff;
                     }
@@ -176,7 +187,7 @@
     }
 }
 
-@mixin pages__menu{
+@mixin pages__menu {
     width: 550px;
     position: absolute;
     top: 100;
@@ -187,11 +198,12 @@
     z-index: 999;
     background: #fff;
     @include cart__item__style;
-    @include btwRsp(1020px, 1200px){
+
+    @include btwRsp(1020px, 1200px) {
         left: 43%;
     }
-   
-    .all{
+
+    .all {
         padding: 20px;
     }
 }
@@ -209,6 +221,7 @@
     transition: .3s ease;
     color: #000;
     padding: 20px;
+
     .left__side {
         @include cart__item__style;
 
@@ -259,7 +272,7 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    
+
 }
 
 @mixin cart__item__style {
@@ -311,10 +324,12 @@
                         color: rgb(26, 25, 25);
                         font-weight: 700;
                         position: relative;
-                        .icon{
+
+                        .icon {
                             padding-right: 5px;
                             font-size: 16px;
                         }
+
                         &::before {
                             content: "";
                             position: absolute;
@@ -336,7 +351,7 @@
     }
 }
 
-@mixin count__btn{
+@mixin count__btn {
     .count__btn {
         display: flex;
         align-items: center;
@@ -373,7 +388,7 @@
     }
 }
 
-@mixin addToCart{
+@mixin addToCart {
     .addToCart {
         .addToCart__btn {
             width: 100%;
@@ -396,7 +411,7 @@
     }
 }
 
-@mixin checkout($width){
+@mixin checkout($width) {
     .checkout {
         .checkout__btn {
             width: $width;
@@ -415,4 +430,24 @@
 
         }
     }
+}
+
+@mixin login__register__btn {
+    .login__register__btn {
+        width: 100%;
+        background: #f76b6a;
+        color: #fff;
+        font-weight: 700;
+        padding: 0 10px;
+        min-height: 44px;
+        border: none;
+        text-transform: uppercase;
+        transition: .3s ease;
+        cursor: pointer;
+
+        &:hover {
+            background: #f58484;
+        }
+    }
+
 }

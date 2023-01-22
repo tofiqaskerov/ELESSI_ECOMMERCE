@@ -150,6 +150,7 @@ function Header() {
                         {/* Home menu */}
                         {item.catItem === navbar[0].catItem && (
                           <div className="big__menu__home">
+          
                             <Stack direction={"row"}>
                               <Grid
                                 className="all"
