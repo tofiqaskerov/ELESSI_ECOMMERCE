@@ -32,6 +32,7 @@ import DetailPopup from "../../Components/DetailPopup/DetailPopup";
 import RelatedProductSection from "./RelatedProductSection/RelatedProductSection";
 import ViewedProductsSection from "./ViewedProuductSection/ViewedProductsSection";
 import GoToTop from "../../Components/GoToTop/GoToTop";
+import BottomCartSideabar from "../../Components/BottomCartSidebar/BottomCartSideabar";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -79,6 +80,7 @@ function Detail() {
     productPictures,
     discount,
   } = selectedProduct;
+
   const products = useSelector((state) => state.products.products);
   const nextPrev = () => {
     const currentIndex = products.findIndex(
@@ -139,7 +141,6 @@ function Detail() {
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(event);
   };
   let discountPercent = ((price - discount) * 100) / price;
   discountPercent = Math.ceil(discountPercent);
@@ -508,6 +509,7 @@ function Detail() {
         </Container>
         <RelatedProductSection products={products} selectedProduct={newSelectedProduct}  />
         <ViewedProductsSection  products={products} selectedProduct={newSelectedProduct}  />
+        <BottomCartSideabar title={title} productCount={productCount} setProductCount={setProductCount} handleAddToCart={handleAddToCart} newSelectedProduct={newSelectedProduct}/>
         <DetailPopup
           productImages={selectedProduct}
           setTrigger={setActivePopup}

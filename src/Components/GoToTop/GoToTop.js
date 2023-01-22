@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import {IoIosArrowUp} from 'react-icons/io'
 
-function GoToTop({position, opacity}) {
+function GoToTop() {
   const [visible, setVisible]  = useState(false)
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 500){
+    if (scrolled > 300){
       setVisible(true)
     } 
-    else if (scrolled <= 500){
+    else if (scrolled <= 300){
       setVisible(false)
     }
   };
@@ -21,7 +21,7 @@ function GoToTop({position, opacity}) {
     window.addEventListener('scroll', toggleVisible);
     const buttonStyle = {
         position: "fixed",
-        bottom: "50px",
+        bottom: "110px",
         right: "20px",
         zIndex: "900",
         border: "none",
@@ -30,7 +30,7 @@ function GoToTop({position, opacity}) {
         color: "#fff",
         background: "#96C14B",
         transition: ".2s ease-in-out",
-        transform: visible? "translateY(0px)": `translateY(30px)`,
+        transform: visible ? "translateY(0px)": `translateY(30px)`,
         fontSize: "18px",
         borderRadius: "50%",
         cursor: "pointer",

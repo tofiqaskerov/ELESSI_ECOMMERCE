@@ -17,13 +17,15 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 import HeaderSwiper from "./HeaderSlider/HeaderSlider";
 import SearchModal from "../SearchModal/SearchModal";
 import { useDispatch, useSelector } from "react-redux";
-import {openCart, openSearchModal, openSidebar} from '../../Redux/Slices/HeaderSlice'
+import {openCart, openFormCart, openSearchModal, openSidebar} from '../../Redux/Slices/HeaderSlice'
+import LoginRegisterSidebar from "../LoginRegisterSidebar/LoginRegisterSidebar";
 function Header() {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const handleOpenSearchModal = () => dispatch(openSearchModal())
   const handleOpenSidebar = () => dispatch(openSidebar())
   const handleOpenCart = () => dispatch(openCart())
+  const handleOpenFormCart = () => dispatch(openFormCart())
   const headerRef = useRef(null);
   const stickyHeader = () => {
     window.addEventListener("scroll", () => {
@@ -1014,7 +1016,9 @@ function Header() {
                     </button>
                   </li>
                   <li className="item">
-                    <CiUser className="user__icon icon" />
+                    <button onClick={handleOpenFormCart}>
+                      <CiUser className="user__icon icon" />
+                    </button>
                   </li>
                   <li className="item">
                     <CiHeart className="favourite__icon icon" />
@@ -1024,7 +1028,6 @@ function Header() {
                     <button onClick={handleOpenCart}>
                       <SlBasket className="checkout__icon icon" />
                     </button>
-                    
                     <span className={cart.cartTotalQuantity > 0 ? "badge animation__badge" : "badge" }>{cart.cartTotalQuantity}</span>
                   </li>
                 </Stack>
@@ -1036,6 +1039,7 @@ function Header() {
       <HeaderSidebar navMenuItem={navbar}  />
       <CartSidebar  />
       <SearchModal />
+      <LoginRegisterSidebar/>
     </>
   );
 }

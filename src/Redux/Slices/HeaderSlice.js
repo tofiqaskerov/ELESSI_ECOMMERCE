@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     searchOpen: false,
     sidebarOpen: false,
-    cartOpen: false
+    cartOpen: false,
+    cart: false,
+    formCart: false
 }
 
 const headerSlice = createSlice({
@@ -27,10 +29,16 @@ const headerSlice = createSlice({
         },
         closeCart : (state) =>{
             state.cartOpen = false
+        },
+        openFormCart : (state) =>{
+            state.formCart = true
+        },
+        closeFormCart : (state) =>{
+            state.formCart = false
         }
     }
 })
 
 
-export const {openSearchModal, closeSearchModal, openSidebar, closeSidebar, openCart, closeCart } = headerSlice.actions
+export const {openSearchModal, closeSearchModal, openSidebar, closeSidebar, openCart, closeCart, openFormCart, closeFormCart } = headerSlice.actions
 export default headerSlice.reducer

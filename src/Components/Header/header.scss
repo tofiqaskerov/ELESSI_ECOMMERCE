@@ -128,14 +128,24 @@
     .main__header {
         background: #fff;
         width: 100%;
-
+        transition: .3s ease;
         &.sticky__header {
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 400;
-            
-
+            z-index: 999;
+            border: none;
+            animation: live_stuck .6s;
+            animation-duration: 0.6s;
+            animation-timing-function: ease;
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: none;
+            animation-play-state: running;
+            animation-name: live_stuck;
+            box-shadow: 0 1px 5px rgb(190 190 190 / 50%);
+        
         }
 
         .container {
@@ -297,7 +307,7 @@
                             }
                         }
 
-                        .search__icon {
+                        .search__icon, .user__icon {
                             font-size: 20px;
                         }
 

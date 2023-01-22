@@ -64,7 +64,10 @@ function CartSidebar() {
                               <Link to="" className="title">
                                 {item.title}
                               </Link>
-                              <span className="price">${item.price}</span>
+                              {
+                                item.discount !== null ? <span className="price">${item.discount}</span> : <span className="price">${item.price}</span>
+                              }
+                              
                             </div>
                             <div className="count__side">
                               <div className="quantity__box">
