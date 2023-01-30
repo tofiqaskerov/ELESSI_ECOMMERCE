@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Tab, Tabs, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -13,7 +13,7 @@ import {
 } from "react-icons/ti";
 import { FaGooglePlusG } from "react-icons/fa";
 import { SlSizeFullscreen } from "react-icons/sl";
-import { IoMdMail, IoMdHeartEmpty } from "react-icons/io";
+import { IoMdMail, IoMdHeartEmpty, IoMdConstruct } from "react-icons/io";
 import img1 from "../../Assets/Img/safe-checkout_1_550x.avif";
 import { addToCart } from "../../Redux/Slices/CartSlice";
 import { openCart } from "../../Redux/Slices/HeaderSlice";
@@ -33,6 +33,10 @@ import RelatedProductSection from "./RelatedProductSection/RelatedProductSection
 import ViewedProductsSection from "./ViewedProuductSection/ViewedProductsSection";
 import GoToTop from "../../Components/GoToTop/GoToTop";
 import BottomCartSideabar from "../../Components/BottomCartSidebar/BottomCartSideabar";
+
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,7 +72,6 @@ function Detail() {
   const dispatch = useDispatch();
   const id = useParams();
   const selectedProduct = useSelector((state) => state.products.product);
-
   const newSelectedProduct = { ...selectedProduct, numDetail: productCount };
   const {
     title,
@@ -80,7 +83,6 @@ function Detail() {
     productPictures,
     discount,
   } = selectedProduct;
-
   const products = useSelector((state) => state.products.products);
   const nextPrev = () => {
     const currentIndex = products.findIndex(
@@ -142,6 +144,7 @@ function Detail() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  
   let discountPercent = ((price - discount) * 100) / price;
   discountPercent = Math.ceil(discountPercent);
   return (
@@ -245,7 +248,7 @@ function Detail() {
                   </div>
                   {discount !== null ? (
                     <p className="price" style={priceColor}>
-                      <del className="old__price">${discount}</del>${price}
+                      <del className="old__price">${price}</del>${discount}
                       <span className="discount__percent">
                         -{discountPercent}%
                       </span>

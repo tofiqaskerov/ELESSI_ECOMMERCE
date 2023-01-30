@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import img5 from "../../../Assets/Img/Salsa_Mukluk_Carbon_GX_Eagle_2019_Carousel-3_360x.webp";
 function DetailPopupSlider(props) {
-  console.log(props.productImages.coverPhoto);
   const { coverPhoto, productPictures } = props.productImages;
   return (
     <>

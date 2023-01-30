@@ -8,7 +8,7 @@ function BottomCartSideabar({title, productCount, setProductCount, handleAddToCa
     if(scrolled > 500){
       setVisible(true)
     }
-    else if(scrolled <=500){
+    else if(scrolled<=500){
       setVisible(false)
     }
   }

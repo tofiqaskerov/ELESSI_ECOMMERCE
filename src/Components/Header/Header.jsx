@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack } from "@mui/material";
+import { Box, Container, FormControl, Grid, InputLabel, MenuItem, Select, Stack } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.scss";
@@ -10,6 +10,7 @@ import { BsFillCartFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { IoHelpBuoyOutline } from "react-icons/io5";
 import { CgKeyhole } from "react-icons/cg";
+import { IoLogOutOutline } from "react-icons/io5";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import HeaderSidebar from "../HeaderSidebar/HeaderSidebar";
@@ -17,15 +18,33 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 import HeaderSwiper from "./HeaderSlider/HeaderSlider";
 import SearchModal from "../SearchModal/SearchModal";
 import { useDispatch, useSelector } from "react-redux";
-import {openCart, openFormCart, openSearchModal, openSidebar} from '../../Redux/Slices/HeaderSlice'
+import {
+  openCart,
+  openFormCart,
+  openSearchModal,
+  openSidebar,
+} from "../../Redux/Slices/HeaderSlice";
 import LoginRegisterSidebar from "../LoginRegisterSidebar/LoginRegisterSidebar";
+import { getByEmail, getUser, logout } from "../../Redux/Slices/User/UserSlice";
+import i18n from "../../translate/i18n";
+import { useTranslation } from "react-i18next";
+
 function Header() {
-  const cart = useSelector(state => state.cart)
-  const dispatch = useDispatch()
-  const handleOpenSearchModal = () => dispatch(openSearchModal())
-  const handleOpenSidebar = () => dispatch(openSidebar())
-  const handleOpenCart = () => dispatch(openCart())
-  const handleOpenFormCart = () => dispatch(openFormCart())
+  const { t, i18n } = useTranslation(["header"])
+  const onChangeLanguage = (e) => {
+    i18n.changeLanguage(e.target.value)
+  };
+  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user.users);
+  const selectedUser = user[user.length-1]
+  const dispatch = useDispatch();
+  const handleOpenSearchModal = () => dispatch(openSearchModal());
+  const handleOpenSidebar = () => dispatch(openSidebar());
+  const handleOpenCart = (e) => {
+    e.preventDefault()
+    dispatch(openCart())};
+  const handleOpenFormCart = () => dispatch(openFormCart());
+  const handleLogout = () => dispatch(logout())
   const headerRef = useRef(null);
   const stickyHeader = () => {
     window.addEventListener("scroll", () => {
@@ -33,7 +52,7 @@ function Header() {
         document.body.scrollTop > 50 ||
         document.documentElement.scrollTop > 150
       ) {
-        headerRef.current.classList.add("sticky__header");  
+        headerRef.current.classList.add("sticky__header");
       } else {
         headerRef.current.classList.remove("sticky__header");
       }
@@ -41,11 +60,12 @@ function Header() {
   };
   useEffect(() => {
     stickyHeader();
+    dispatch(getByEmail())  
     return () => window.removeEventListener("scroll", stickyHeader);
-  });
+  }, []);
   const navbar = [
     {
-      catItem: "Demo",
+      catItem: t("Demo"),
       path: "/",
       badge: null,
     },
@@ -64,6 +84,11 @@ function Header() {
       badge: "Sale!",
     },
   ];
+  const language = [
+    {lan: "en"},
+    {lan: "az"},
+    {lan: "ru"},
+  ]
   return (
     <>
       <header id="header">
@@ -105,14 +130,25 @@ function Header() {
               </ul>
             </div>
             <div className="content">
-              <span>
-                USD <i className="ri-arrow-down-s-line"></i>
-                <ul className="select">
-                  <li className="li">EUR</li>
-                  <li className="active-cl li">USD</li>
-                  <li className="li">GBP</li>
-                </ul>
-              </span>
+            <Box className='box' sx={{ minWidth: 120 }}>
+                <FormControl  fullWidth>
+                  <InputLabel style={{ color: "#001727" }} id="demo-simple-select-label">Language</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Age"
+                    className='select'
+                    onChange={onChangeLanguage}
+                  >
+                    {
+                      language?.map((item, index) => (
+                        <MenuItem key={index} value={item.lan}>{item.lan.toUpperCase()}</MenuItem>
+                      ))
+                    }
+
+                  </Select>
+                </FormControl>
+              </Box>
             </div>
           </Container>
         </div>
@@ -150,7 +186,6 @@ function Header() {
                         {/* Home menu */}
                         {item.catItem === navbar[0].catItem && (
                           <div className="big__menu__home">
-          
                             <Stack direction={"row"}>
                               <Grid
                                 className="all"
@@ -1012,14 +1047,45 @@ function Header() {
               <ul className="items">
                 <Stack direction="row">
                   <li className="item">
-                    <button  onClick={handleOpenSearchModal}>
+                    <button onClick={handleOpenSearchModal}>
                       <CiSearch className="search__icon icon" />
                     </button>
                   </li>
                   <li className="item">
-                    <button onClick={handleOpenFormCart}>
-                      <CiUser className="user__icon icon" />
-                    </button>
+                    {user.length === 0 ? (
+                      <button onClick={handleOpenFormCart}>
+                        <CiUser className="user__icon icon" />
+                      </button>
+                    ) : (
+                      <button>
+                        <CiUser className="user__icon icon" />
+                        <div className="logout__side">
+                          <ul className="main__ul">
+                            {user.length !== 0 ? (
+                              <li className="main__li">
+                                <Link>
+                                  <span>{selectedUser.name}</span>
+                                </Link>
+                              </li>
+                            ) : (
+                              <></>
+                            )}
+
+                            <li className="main__li">
+                              <Link>Dashboard</Link>
+                            </li>
+                            <li className="main__li">
+                              <button onClick={(e) =>handleLogout(e)}>
+                                <Link>
+                                  <span>Logout</span>
+                                  <IoLogOutOutline />
+                                </Link>
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                      </button>
+                    )}
                   </li>
                   <li className="item">
                     <CiHeart className="favourite__icon icon" />
@@ -1029,7 +1095,16 @@ function Header() {
                     <button onClick={handleOpenCart}>
                       <SlBasket className="checkout__icon icon" />
                     </button>
-                    <span className={cart.cartTotalQuantity > 0 ? "badge animation__badge" : "badge" }>{cart.cartTotalQuantity}</span>
+                    <span
+                      className={
+                        cart.cartTotalQuantity > 0
+                          ? "badge animation__badge"
+                          : "badge"
+                      }
+                    >
+                      {cart.cartTotalQuantity}
+                 
+                    </span>
                   </li>
                 </Stack>
               </ul>
@@ -1037,10 +1112,10 @@ function Header() {
           </Container>
         </div>
       </header>
-      <HeaderSidebar navMenuItem={navbar}  />
-      <CartSidebar  />
+      <HeaderSidebar navMenuItem={navbar} />
+      <CartSidebar />
       <SearchModal />
-      <LoginRegisterSidebar/>
+      <LoginRegisterSidebar />
     </>
   );
 }

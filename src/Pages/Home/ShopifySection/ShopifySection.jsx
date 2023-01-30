@@ -5,7 +5,10 @@ import img1 from "../../../Assets/Img/bike-banner-1_670x.jpg";
 import img2 from "../../../Assets/Img/bike-banner-2_670x.webp";
 import img3 from "../../../Assets/Img/bike-banner-3_670x.webp";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 function ShopifySection() {
+  const { t } = useTranslation(["home"])
+
   return (
     <section className="shopify">
       <Container maxWidth="lg">
@@ -16,7 +19,7 @@ function ShopifySection() {
                 <img src={img1} alt="" />
                 <div className="overlay__item overlay__item__1">
                   <h1 className="title">The narrowest bike</h1>
-                  <h1 className="sale__off"> Sale Off 50 %</h1>
+                  <h1 className="sale__off"> {t("Sale_off")+" 50%"}</h1>
                 </div>
               </Link>
             </Grid>
@@ -34,7 +37,7 @@ function ShopifySection() {
                 <img src={img2} alt="" />
                 <div className="overlay__item overlay__item__2">
                   <h1 className="title">Composants</h1>
-                  <h1 className="sale__off"> Sale Off 30 %</h1>
+                  <h1 className="sale__off"> {t("Sale_off")+" 30%"} </h1>
                 </div>
               </Link>
             </Grid>

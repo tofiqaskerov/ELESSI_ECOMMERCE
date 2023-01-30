@@ -37,15 +37,12 @@ const cartSlice = createSlice({
             localStorage.setItem("cartItem", JSON.stringify(state.cartItems))
         },
         decreaseCart(state, action){
-            console.log(action);
             const itemIndex =  state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id)
             if(state.cartItems[itemIndex].cartQuantity > 1){
                 state.cartItems[itemIndex].cartQuantity -=1
-                console.log(state.cartItems[itemIndex].cartQuantity);
             }
                 else if(state.cartItems[itemIndex].cartQuantity === 1){
                     const nextCartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
-                    console.log(nextCartItems);
                     state.cartItems = nextCartItems;
                 }
 

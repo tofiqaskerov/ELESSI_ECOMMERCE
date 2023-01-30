@@ -3,7 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./slider_item.scss";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 function SliderItem({ position, title, subtitle, img }) {
+  const { t } = useTranslation(["home"])
   const bannerImg = {
     background: `url(${img})`,
     maxHeight: "638px"
@@ -32,7 +34,7 @@ function SliderItem({ position, title, subtitle, img }) {
                         }}
                         className="title"
                       >
-                        {title}
+                        {t("Banner_title")}
                       </motion.h1>
                       <motion.h1
                         initial={{
@@ -48,7 +50,7 @@ function SliderItem({ position, title, subtitle, img }) {
                         }}
                         className="subtitle"
                       >
-                        {subtitle}
+                         {t("Banner_subtitle")}
                       </motion.h1>
                       <motion.a
                         initial={{
@@ -65,7 +67,7 @@ function SliderItem({ position, title, subtitle, img }) {
                         to="/"
                         className="shop__btn"
                       >
-                        Shop Now
+                        {t("Shop_now")}
                       </motion.a>
                     </Grid>
                 </Container>
@@ -86,11 +88,11 @@ function SliderItem({ position, title, subtitle, img }) {
                           opacity: 1,
                         }}
                         transition={{
-                          duration: 0.6,
+                          duration: 0.6,  
                         }}
                         className="title"
                       >
-                        {title}
+                        {t("Banner_title")}
                       </motion.h1>
                       <motion.h1
                         initial={{
@@ -106,7 +108,7 @@ function SliderItem({ position, title, subtitle, img }) {
                         }}
                         className="subtitle"
                       >
-                        {subtitle}
+                        {t("Banner_subtitle_2")}
                       </motion.h1>
                       <motion.a
                         initial={{
@@ -123,7 +125,7 @@ function SliderItem({ position, title, subtitle, img }) {
                         to="/"
                         className="shop__btn"
                       >
-                        Shop Now
+                        {t("Shop_now")}
                       </motion.a>
                     </Grid>
                 </Container>

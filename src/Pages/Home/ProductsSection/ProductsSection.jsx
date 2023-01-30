@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Container, Grid, Tab, Tabs, Typography } from "@mui/material";
 import "./products_section.scss";
 import ProductList from "../../../Components/UI/ProductList/ProductList";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -29,18 +30,17 @@ function a11yProps(index) {
   };
 }
 function ProductsSection({product}) {
- 
+  const { t } = useTranslation(["home"])
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(event);
   };
   return (
     <section className="products">
       <Container maxWidth="lg">
         <Grid container xs={12} flexDirection={"column"} textAlign={"center"}>
           <div className="head__title">
-            <h1 className="title">Our Products</h1>
+            <h1 className="title">{t("Our_products")}</h1>
           </div>
           <div className="categories">
             <Box sx={{ width: "100%" }}>
@@ -52,10 +52,10 @@ function ProductsSection({product}) {
                   className="tabs"
                 >
                   
-                    <Tab label="NEW ARRIVALS" {...a11yProps(0)} />
-                    <Tab label="FEATURED" {...a11yProps(1)} />
-                    <Tab label="BEST SELLER" {...a11yProps(2)} />
-                    <Tab label="ON SALE " {...a11yProps(3)} />
+                    <Tab label={t("New_arrivals")} {...a11yProps(0)} />
+                    <Tab label={t("Featured")} {...a11yProps(1)} />
+                    <Tab label={t("Best_seller")} {...a11yProps(2)} />
+                    <Tab label={t("On_sale")} {...a11yProps(3)} />
  
                 </Tabs>
               </Box>

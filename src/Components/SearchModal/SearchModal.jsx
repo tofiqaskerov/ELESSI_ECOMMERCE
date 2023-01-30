@@ -19,17 +19,11 @@ function SearchModal() {
   const dispatch = useDispatch();
   const handleCloseSearchModal = () => dispatch(closeSearchModal());
   const [products, setProducts] = useState([]);
-  const handleSearch = (e) => {
-    const filterProduct = e.target.value;
-    const searchedProducts = products.filter(item =>
-      item.title.toLowerCase().includes(filterProduct.toLowerCase())
-    );
-    setProducts(searchedProducts);
-  };
+  const [query, setQuery] = useState("");
   useEffect(() => {
     fetch(`${BASE_URL}/product/getall`)
       .then(res => res.json())
-      .then(data => {setProducts(data.data)});
+      .then(data => setProducts(data.data));
   },[]);
  
   return (
@@ -54,7 +48,7 @@ function SearchModal() {
                   type="text"
                   className="input__txt"
                   placeholder="search for products"
-                  onChange={handleSearch}
+                  onChange={(e) => setQuery(e.target.value) }
                 />
                 <div className="input__line"></div>
               </div>
@@ -62,11 +56,17 @@ function SearchModal() {
           </div>
         </div>
         <div className="products">
-          {products.length === 0 ? (
+          {query.length === 0 ? (
             <h1 className="text-center">No product found</h1>
           ) : (
             <Grid container columnSpacing={2} rowSpacing={2}>
-              {products?.map((item, index) => (
+              {products?.filter((val) => {
+                if(query === ""){
+                  return val
+                }else if(val.title.toLowerCase().includes(query.toLocaleLowerCase())){
+                  return val
+                }
+              }).map((item, index) => (
                 <Grid
                   className="product__item"
                   xs={6}
@@ -120,7 +120,9 @@ function SearchModal() {
                     </Link>
                   </div>
                 </Grid>
-              ))}
+              ))
+              
+              }
             </Grid>
           )}
         </div>
