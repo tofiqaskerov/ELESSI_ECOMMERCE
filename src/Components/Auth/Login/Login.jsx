@@ -1,46 +1,48 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { HiOutlineUserPlus, HiOutlineLockClosed } from "react-icons/hi2";
 import { BiHide, BiShowAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { BASE_URL } from "../../../Config/api";
 import { closeFormCart } from "../../../Redux/Slices/HeaderSlice";
 import { toast } from "react-toastify";
+import {
+  addUser,
+  loginUser,
+  setToken,
+} from "../../../Redux/Slices/Auth/AuthSlice";
 function Login({ loginRegister, handleShowPassword, showIcon }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(null);
   const dispatch = useDispatch();
-
   const signInUser = async (e) => {
     e.preventDefault();
-    let res = await fetch(`${BASE_URL}/auth/login`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((data) => data.json())
-      .catch((error) => toast.error(`Failed: ${error.message}`));
-    if (res.status === 200) {
-      localStorage.setItem("token", JSON.stringify(res.token));
-      toast.success("You are logged in", { position: "top-right", pauseOnHover: false, })
-      dispatch(closeFormCart());
+    const res =  await dispatch(
+     loginUser({
+       email: email,
+       password: password,
+     })
+    );
+     const payloadRes = res.payload
+    if(payloadRes.status === 200){
       setEmail("")
       setPassword("")
+      toast.success("You are logged in", { position: "top-right", pauseOnHover: false, })
+      dispatch(setToken(payloadRes.token))
+      dispatch(addUser(payloadRes.data))
+      dispatch(closeFormCart()); 
+      setLoginError(null);
+    }else{
+      setLoginError(payloadRes.message);
     }
-    if (res.status === 401) {
-      setLoginError(res.message);
-    }
+  
+
   };
+
   return (
     <>
       <div className={loginRegister ? "login__form__side" : "d-none"}>
-        <form action="" onSubmit={(e) => signInUser(e)}>
+        <form action="" onSubmit={(e) =>signInUser(e)}>
           <div className="email__side form__side">
             <label htmlFor="email">
               Email <span className="required">*</span>
@@ -89,9 +91,9 @@ function Login({ loginRegister, handleShowPassword, showIcon }) {
                   <BiShowAlt />
                 </span>
               </span>
-            </div>  
+            </div>
           </div>
-          <span style={{color: "red", fontWeight: "700"}}>{loginError}</span>
+          <span style={{ color: "red", fontWeight: "700" }}>{loginError}</span>
           <div className="login__btn__side ">
             <button type="submit" className="login__btn login__register__btn">
               Login

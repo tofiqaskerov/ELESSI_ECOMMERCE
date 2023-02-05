@@ -1,82 +1,77 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import { BASE_URL } from '../../../Config/api'
-import {toast} from "react-toastify"
 const initialState = {
-    loading: false,
-    token: "",
-    status: ""
+    token: null,
+    user:  localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : [] ,
+ 
 }
 
 
 export const registerUser = createAsyncThunk('registerUser', async(body) =>{
-    const res = await fetch(`${BASE_URL}/Auth/register`, {
-        method: "post",
-        headers: {
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    })
-    .then(status => status.json())
+    try{
+        const res = await fetch(`${BASE_URL}/Auth/register`, {
+            method: "post",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(body),
+          })
+          const data =  await res.json()
+        
+         return  data
+    }catch (error){
+        alert(error) 
+    }
     
-    .catch(error =>{
-        toast.error(`Failed: ${error.message}`)
-    })
-    
-    return  res
 })
 
+
 export const loginUser = createAsyncThunk('loginUser', async(body) =>{
-    const res = await fetch(`${BASE_URL}/Auth/login`, {
-        method: "post",
-        headers: {
-            'Content-type': 'application/json',
-             Authorization: localStorage.getItem("token")
-        },
-        body: JSON.stringify(body)
-    }).then(res => 
-        res.json()
-    ).catch(error =>{
-        toast.error(`Failed: ${error.message}`)
-    })
-   
-    return res
+    try {
+        const res = await fetch(`${BASE_URL}/auth/login`, {
+            method: "post",
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        });
+        const data  = await res.json()
+    
+        return data
+
+        
+    } catch (error) {
+        alert(error) 
+    }
+
 })
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        login: (state, action) => async(body) =>{
-            const res = await fetch(`${BASE_URL}/Auth/login`, {
-                method: "post",
-                headers: {
-                    'Content-type': 'application/json',
-                     Authorization: localStorage.getItem("token")
-                },
-                body: JSON.stringify(body)
-            }).then(res => 
-                res.json()
-            ).catch(error =>{
-                toast.error(`Failed: ${error.message}`)
-            })
-            if(res.status === 200){
-                state.token = res.token
-                toast.success("Registered successfully", {position : "top-right"})   
-            }
-           
-        }
-        // addToken: (state,action) =>{
-        //     state.token = localStorage.getItem("token")
-        // },
-      
-        // logout: (state,action) =>{
-        //     state.token = null
-        //     localStorage.clear()
-        // }
+       
+        setToken: (state, action) => {
+            state.token = action.payload;
+            localStorage.setItem("token", state.token)
+          },
+        addUser: (state, action) => {
+          state.user.push(action.payload);
+          localStorage.setItem("user",  JSON.stringify(state.user))
+
+        },
+        logout: (state, action) =>{
+            state.user.shift()
+            state.token = []
+            localStorage.setItem("user", state.user)
+            localStorage.setItem("token", state.token)
+        } 
     },
+   
+ 
  
 })
 
-export const {login, logout} = authSlice.actions
+export const {setToken, addUser, logout} = authSlice.actions
 export default authSlice.reducer;
 

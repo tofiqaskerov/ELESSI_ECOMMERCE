@@ -1,15 +1,17 @@
 import { Container, Grid } from '@mui/material'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import EquimentSlider from '../../../Components/EquimentSlider/EquimentSlider'
 import './viewed_product_section.scss'
 function ViewedProductsSection({products, selectedProduct}) {
-    const relatedProducts = products.filter(product => product.discount)
+  const {t} = useTranslation(["detail"])
+  const relatedProducts = products.filter(product => product.discount)
   return (
     <section className='viewed__product'>
          <Container maxWidth="lg">
         <Grid container xs={12} flexDirection={"column"} textAlign={"center"}>
           <div className="head__title">
-            <h1 className="title">Discounted product </h1>
+            <h1 className="title">{t("Discounted_product")}</h1>
           </div>
         </Grid>
         {

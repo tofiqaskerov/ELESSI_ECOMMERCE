@@ -5,7 +5,6 @@ import productReducer from './Slices/Product/ProductSlice'
 import blogReducer from './Slices/Blog/BlogSlice'
 import sliderReducer from './Slices/Slider/SliderSlice'
 import authReducer from './Slices/Auth/AuthSlice'
-import userReducer from './Slices/User/UserSlice'
  const store  = configureStore({
     reducer:{
       header: headerReducer,
@@ -14,7 +13,6 @@ import userReducer from './Slices/User/UserSlice'
       blogs: blogReducer,
       sliders: sliderReducer,
       auth: authReducer,
-      user: userReducer
 
     }
 })

@@ -1,7 +1,9 @@
 import { Container } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./bottom_cart_sidebar.scss";
 function BottomCartSideabar({title, productCount, setProductCount, handleAddToCart, newSelectedProduct}) {
+  const {t} = useTranslation(["detail"])
   const [visible, setVisible]  = useState(false)
   const toggleVisible = () =>{
     const scrolled = document.documentElement.scrollTop;
@@ -49,11 +51,11 @@ function BottomCartSideabar({title, productCount, setProductCount, handleAddToCa
                   className="addToCart__btn"
                     onClick={() => handleAddToCart(newSelectedProduct)}
                 >
-                  ADD TO CART
+                  {t("Add_cart")}
                 </button>
               </div>
               <div className="checkout">
-                <button className="checkout__btn">BUY IT NOW</button>
+                <button className="checkout__btn">{t("Buy_now")}</button>
               </div>
             </div>
           </div>

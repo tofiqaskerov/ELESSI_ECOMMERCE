@@ -33,6 +33,9 @@ import RelatedProductSection from "./RelatedProductSection/RelatedProductSection
 import ViewedProductsSection from "./ViewedProuductSection/ViewedProductsSection";
 import GoToTop from "../../Components/GoToTop/GoToTop";
 import BottomCartSideabar from "../../Components/BottomCartSidebar/BottomCartSideabar";
+import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { ProductCountContext } from "../../Context/ProductCountContext";
 
 
 
@@ -67,6 +70,7 @@ function a11yProps(index) {
 function Detail() {
   const [next, setNext] = useState({});
   const [prev, setPrev] = useState({});
+  const {t} = useTranslation(["detail"])
   const [activePopup, setActivePopup] = useState(false);
   const [productCount, setProductCount] = useState(1);
   const dispatch = useDispatch();
@@ -95,7 +99,6 @@ function Detail() {
       setPrev(prevElement);
     }
   };
-
   const img = document.querySelector(".overlay__coverPhoto");
   const img2 = document.querySelector(".overlay__productPictures");
   const box = document.querySelector(".box__all");
@@ -133,6 +136,7 @@ function Detail() {
   useEffect(() => {
     dispatch(fetchProductById(id.id));
     dispatch(fetchProducts());
+    
   }, [dispatch, id.id]);
 
   useEffect(() => {
@@ -266,7 +270,7 @@ function Detail() {
                       <div></div>
                     </div>
                   </div>
-                  <h5>offer ends in:</h5>
+                  <h5>{t("Offer_end")}</h5>
                   <Clock time={offer} />
                   <p className="easter__egg">
                     The last day is June 4, 2023 {":)"}
@@ -299,13 +303,13 @@ function Detail() {
                           className="addToCart__btn"
                           onClick={() => handleAddToCart(newSelectedProduct)}
                         >
-                          ADD TO CART
+                          {t("Add_cart")}
                         </button>
                       </div>
                     </div>
                     <p>— or —</p>
                     <div className="checkout">
-                      <button className="checkout__btn">BUY IT NOW</button>
+                      <button className="checkout__btn">{t("Buy_now")}</button>
                     </div>
                   </div>
                   <div className="product__delivery">
@@ -325,7 +329,7 @@ function Detail() {
                     <img src={img1} alt="" />
                   </div>
                   <div className="share">
-                    <span>Share on:</span>
+                    <span>{t("Share")}</span>
                     <ul className="icon__ul">
                       <li className="icon__li">
                         <Link href="#">

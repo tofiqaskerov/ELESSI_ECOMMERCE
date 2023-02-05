@@ -8,7 +8,7 @@ import { BiHide, BiShowAlt } from "react-icons/bi";
 import { IoDocumentsOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { BASE_URL } from "../../../Config/api";
+import { registerUser } from "../../../Redux/Slices/Auth/AuthSlice";
 function Register({ setloginRegister, loginRegister, handleShowPassword, showIcon }) {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -17,32 +17,17 @@ function Register({ setloginRegister, loginRegister, handleShowPassword, showIco
   const dispatch = useDispatch();
   const registeredUser = async (e) => {
     e.preventDefault();
-    // dispatch(
-    //   registerUser({
-    //     name: name,
-    //     surname: surname,
-    //     email: email,
-    //     password: password,
-    //   })
-    // );
-
-    const res = await fetch(`${BASE_URL}/Auth/register`, {
-      method: "post",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
+    const res = await dispatch(
+      registerUser({
         name: name,
         surname: surname,
         email: email,
         password: password,
-      }),
-    })
-      .then((status) => status.json())
-      .catch((error) => {
-        toast.error(`Failed: ${error.message}`);
-      });
-      if (res.status === 200) {
+      })
+    );
+     const resPayload = res.payload
+         
+      if (resPayload.status === 200) {
         toast.success("Registered successfully", { position: "top-right", pauseOnHover: false })
         setloginRegister(true)
         setName("")

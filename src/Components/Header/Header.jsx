@@ -1,5 +1,5 @@
 import { Box, Container, FormControl, Grid, InputLabel, MenuItem, Select, Stack } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./header.scss";
 import Logo from "../../Assets/Img/bike-logo-retina_500x.webp";
@@ -25,9 +25,10 @@ import {
   openSidebar,
 } from "../../Redux/Slices/HeaderSlice";
 import LoginRegisterSidebar from "../LoginRegisterSidebar/LoginRegisterSidebar";
-import { getByEmail, getUser, logout } from "../../Redux/Slices/User/UserSlice";
+
 import i18n from "../../translate/i18n";
 import { useTranslation } from "react-i18next";
+import { logout } from "../../Redux/Slices/Auth/AuthSlice";
 
 function Header() {
   const { t, i18n } = useTranslation(["header"])
@@ -35,7 +36,7 @@ function Header() {
     i18n.changeLanguage(e.target.value)
   };
   const cart = useSelector((state) => state.cart);
-  const user = useSelector((state) => state.user.users);
+  const user = useSelector((state) => state.auth.user);
   const selectedUser = user[user.length-1]
   const dispatch = useDispatch();
   const handleOpenSearchModal = () => dispatch(openSearchModal());
@@ -44,7 +45,9 @@ function Header() {
     e.preventDefault()
     dispatch(openCart())};
   const handleOpenFormCart = () => dispatch(openFormCart());
-  const handleLogout = () => dispatch(logout())
+  const handleLogout = () =>{
+        dispatch(logout())
+    }
   const headerRef = useRef(null);
   const stickyHeader = () => {
     window.addEventListener("scroll", () => {
@@ -60,7 +63,6 @@ function Header() {
   };
   useEffect(() => {
     stickyHeader();
-    dispatch(getByEmail())  
     return () => window.removeEventListener("scroll", stickyHeader);
   }, []);
   const navbar = [
@@ -1075,7 +1077,7 @@ function Header() {
                               <Link>Dashboard</Link>
                             </li>
                             <li className="main__li">
-                              <button onClick={(e) =>handleLogout(e)}>
+                              <button onClick={handleLogout}>
                                 <Link>
                                   <span>Logout</span>
                                   <IoLogOutOutline />

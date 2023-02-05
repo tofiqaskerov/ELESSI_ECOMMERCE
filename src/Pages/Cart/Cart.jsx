@@ -1,16 +1,16 @@
 import { Container, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import React, { useContext } from "react";
+import React from "react";
 import Helmet from "../../Components/Helmet/Helmet";
 import { GoAlert } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import "./cart.scss";
-import { useSelector } from "react-redux";
-import { ProductCountContext } from "../../Context/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, decreaseCart } from "../../Redux/Slices/CartSlice";
 
 function Cart() {
-
   const cart = useSelector((state) => state.cart);
+
   return (
     <Helmet title={"Cart Page"}>
       <section className="cart">
@@ -46,7 +46,7 @@ function Cart() {
                       </thead>
                       <tbody>
                         {cart.cartItems.length !== 0 ? (
-                          cart.cartItems.map((item, index) => (
+                          cart.cartItems?.map((item, index) => (
                             <Tr item={item} key={index} />
                           ))
                         ) : (
@@ -66,8 +66,17 @@ function Cart() {
 }
 
 function Tr({ item }) {
-
+  
   const { title, coverPhoto, price, cartQuantity, id } = item;
+  const dispatch = useDispatch();
+  const handleIncreaseCart = (item) => {
+    dispatch(addToCart(item));
+  };
+  debugger
+  const handleDecreaseCart = (item) => {
+    dispatch(decreaseCart(item));
+  };
+
   return (
     <tr>
       <td>
@@ -81,44 +90,19 @@ function Tr({ item }) {
       </td>
       <td>${price}</td>
       <td>
-        {/* <div className="addToCart__side">
-          <div className="count__addToCart">
-            <div className="count__btn">
-              <button
-                className="minus btn"
-                onClick={() => {
-                  productCount > 1
-                    ? setProductCount(productCount - 1)
-                    : setProductCount(1);
-                }}
-              >
-                -
-              </button>
-              <span>{productCount}</span>
-              <button
-                className="plus btn"
-                onClick={() => {
-                  setProductCount(productCount + 1);
-                }}
-              >
-                +
-              </button>
-            </div>
-            <div className="addToCart">
-              <button
-                className="addToCart__btn"
-                onClick={() => handleAddToCart(newSelectedProduct)}
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-          <p>— or —</p>
-          <div className="checkout">
-            <button className="checkout__btn">BUY IT NOW</button>
-          </div>
-        </div> */}
-        {cartQuantity}
+        <div className="count__btn">
+          <button
+            className="minus btn"
+            onClick={() => handleDecreaseCart(item)}
+          >
+            -
+          </button>
+          <span>{cartQuantity}</span>
+          
+          <button className="plus btn" onClick={() => handleIncreaseCart(item)}>
+            +
+          </button>
+        </div>
       </td>
       <td>{cartQuantity * price}</td>
     </tr>

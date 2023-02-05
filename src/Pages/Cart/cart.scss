@@ -1,4 +1,4 @@
-@use '../../Assets/scss/main.scss'as *;
+@use '../../Assets/scss/main.scss' as *;
 
 .cart {
     font-family: 'Nunito Sans', sans-serif;
@@ -79,6 +79,7 @@
                                     display: block;
                                     font-weight: 600;
                                 }
+                               @include count__btn
                             }
                         }
                     }
