@@ -33,7 +33,7 @@ function DetailPopup(props) {
     <div className="detail__popup">
       <div className="detail__popup__inner">
         <div className="head__all">
-          <Container maxWidth="xxl">
+          <Container maxWidth="xxl"  disableGutters={true}>
             <div className="head__side">
               <div className="postion_side">
                 <span>1/3</span>

@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./search_modal.scss";
 import { GrClose } from "react-icons/gr";
-import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { closeSearchModal } from "../../Redux/Slices/HeaderSlice";
-import ProductList from "../UI/ProductList/ProductList";
 import { BASE_URL } from "../../Config/api";
 import { Grid } from "@mui/material";
-import ProductItem from "../UI/ProductItem/ProductItem";
 import { Link } from "react-router-dom";
 import {
   AiOutlineEye,
@@ -121,7 +118,6 @@ function SearchModal() {
                   </div>
                 </Grid>
               ))
-              
               }
             </Grid>
           )}

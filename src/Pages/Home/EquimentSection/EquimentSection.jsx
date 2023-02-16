@@ -8,7 +8,7 @@ function EquimentSection({product}) {
   const { t } = useTranslation(["home"])
   return (
     <div className="equiment">
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Grid container xs={12} flexDirection={"column"} textAlign={"center"}>
           <div className="head__title">
             <h1 className="title">{t("Our_equipment")}</h1>

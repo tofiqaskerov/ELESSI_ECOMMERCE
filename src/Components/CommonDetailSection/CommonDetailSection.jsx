@@ -9,7 +9,7 @@ import {
 function CommonDetailSection({ nextData, prevData, title }) {
   return (
     <div className="common__section">
-      <Container maxWidth="xxl">
+      <Container maxWidth="xxl" >
         <div className="all d-flex">
           <div className="breadcrumb d-flex">
             <Link to="">Home /</Link>

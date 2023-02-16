@@ -8,7 +8,7 @@ function ViewedProductsSection({products, selectedProduct}) {
   const relatedProducts = products.filter(product => product.discount)
   return (
     <section className='viewed__product'>
-         <Container maxWidth="lg">
+         <Container maxWidth="lg" >
         <Grid container xs={12} flexDirection={"column"} textAlign={"center"}>
           <div className="head__title">
             <h1 className="title">{t("Discounted_product")}</h1>

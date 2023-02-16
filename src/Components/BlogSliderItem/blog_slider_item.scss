@@ -1,14 +1,14 @@
+@use '../../Assets/scss/main.scss' as * ;
 .blog__item {
     transition: .3s ease;
-    
     &:hover {
       box-shadow: 0 0 4px rgb(0 0 0 / 20%);
 
         .img__side {
             img {
                 transform: scale(1.2);
-                height: 100%;
                 width: 100%;
+                height: auto;
             }
         }
     }
@@ -28,7 +28,10 @@
         border-right: 1px solid rgb(221, 220, 220);
         border-left: 1px solid rgb(221, 220, 220);
         border-bottom: 1px solid rgb(221, 220, 220);
-        max-height: 200px;
+        @include btwRsp(650px, 1053px){
+          height: 220px;
+
+        }
         .category {
             .slider__info {
 
@@ -50,12 +53,12 @@
 
         .title {
             padding-top: 12px;
-
-
             a {
                 color: #000;
                 transition: .2s ease;
-
+                width: 100%;
+                display: inline-block;
+                font-size: 18px;
                 &:hover {
                     color: var(--select-cl);
                 }
@@ -119,3 +122,6 @@
     }
 }
 
+// .blog__item{
+//     max-height: 400px;
+// }

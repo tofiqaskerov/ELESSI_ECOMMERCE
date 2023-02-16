@@ -120,7 +120,7 @@ function CartSidebar() {
                       </label>
                     </div>
                     <div className="buttons__side">
-                      <Link to={"/cart"} className="view__cart__btn btn">view cart</Link>
+                      <Link to={"/cart"} onClick={handleCloseCart} className="view__cart__btn btn">view cart</Link>
                       <Link to={"/cart"} className="check__out__btn btn">check out</Link>
                     </div>
                   </div>

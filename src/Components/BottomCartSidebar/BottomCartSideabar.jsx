@@ -19,7 +19,7 @@ function BottomCartSideabar({title, productCount, setProductCount, handleAddToCa
   return (
     <>
       <div className={visible ? "bottom__cart__sidebar bottom__cart__sidebar__active " :  "bottom__cart__sidebar"}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" disableGutters={true}>
           <div className="all__side">
             <div className="left__side">
               <h1>{title}</h1>

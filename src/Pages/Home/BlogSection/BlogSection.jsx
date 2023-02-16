@@ -8,7 +8,7 @@ function BlogSection({blog}) {
 
   return (
     <div className="blog">
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Grid container xs={12} flexDirection={"column"} textAlign={"center"}>
           <div className="head__title">
             <h1 className="title">{t("Latest_blog")}</h1>

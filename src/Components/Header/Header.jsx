@@ -1,6 +1,16 @@
-import { Box, Container, FormControl, Grid, InputLabel, MenuItem, Select, Stack } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Container,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+} from "@mui/material";
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./header.scss";
 import Logo from "../../Assets/Img/bike-logo-retina_500x.webp";
 import { CiSearch, CiHeart, CiUser } from "react-icons/ci";
@@ -31,23 +41,26 @@ import { useTranslation } from "react-i18next";
 import { logout } from "../../Redux/Slices/Auth/AuthSlice";
 
 function Header() {
-  const { t, i18n } = useTranslation(["header"])
+  const { t, i18n } = useTranslation(["header"]);
   const onChangeLanguage = (e) => {
-    i18n.changeLanguage(e.target.value)
+    i18n.changeLanguage(e.target.value);
   };
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.auth.user);
-  const selectedUser = user[user.length-1]
+  const selectedUser = user[user.length - 1];
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleOpenSearchModal = () => dispatch(openSearchModal());
   const handleOpenSidebar = () => dispatch(openSidebar());
   const handleOpenCart = (e) => {
-    e.preventDefault()
-    dispatch(openCart())};
+    e.preventDefault();
+    dispatch(openCart());
+  };
   const handleOpenFormCart = () => dispatch(openFormCart());
-  const handleLogout = () =>{
-        dispatch(logout())
-    }
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
   const headerRef = useRef(null);
   const stickyHeader = () => {
     window.addEventListener("scroll", () => {
@@ -86,11 +99,7 @@ function Header() {
       badge: "Sale!",
     },
   ];
-  const language = [
-    {lan: "en"},
-    {lan: "az"},
-    {lan: "ru"},
-  ]
+  const language = [{ lan: "en" }, { lan: "az" }, { lan: "ru" }];
   return (
     <>
       <header id="header">
@@ -132,22 +141,26 @@ function Header() {
               </ul>
             </div>
             <div className="content">
-            <Box className='box' sx={{ minWidth: 120 }}>
-                <FormControl  fullWidth>
-                  <InputLabel style={{ color: "#001727" }} id="demo-simple-select-label">Language</InputLabel>
+              <Box className="box" sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel
+                    style={{ color: "#001727" }}
+                    id="demo-simple-select-label"
+                  >
+                    Language
+                  </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     label="Age"
-                    className='select'
+                    className="select"
                     onChange={onChangeLanguage}
                   >
-                    {
-                      language?.map((item, index) => (
-                        <MenuItem key={index} value={item.lan}>{item.lan.toUpperCase()}</MenuItem>
-                      ))
-                    }
-
+                    {language?.map((item, index) => (
+                      <MenuItem key={index} value={item.lan}>
+                        {item.lan.toUpperCase()}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </Box>
@@ -158,12 +171,14 @@ function Header() {
         <div className="main__header" ref={headerRef}>
           <Container maxWidth="xxl" className="container">
             <div className="burger__icon__side">
-              <Stack direction={"row"} spacing={1}>
+              <Stack direction="row" spacing={1}>
                 <div className="burger__icon" onClick={handleOpenSidebar}>
                   <i className="ri-menu-2-line"></i>
                 </div>
                 <div className="search__icon">
-                  <CiSearch />
+                  <button onClick={handleOpenSearchModal}>
+                    <CiSearch />
+                  </button>
                 </div>
               </Stack>
             </div>
@@ -1066,6 +1081,7 @@ function Header() {
                             {user.length !== 0 ? (
                               <li className="main__li">
                                 <Link>
+                                  <Avatar src={selectedUser.userPhoto}></Avatar>
                                   <span>{selectedUser.name}</span>
                                 </Link>
                               </li>
@@ -1105,7 +1121,6 @@ function Header() {
                       }
                     >
                       {cart.cartTotalQuantity}
-                 
                     </span>
                   </li>
                 </Stack>

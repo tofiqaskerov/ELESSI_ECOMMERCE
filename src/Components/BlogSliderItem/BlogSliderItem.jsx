@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./blog_slider_item.scss";
-import {GoBook} from 'react-icons/go'
+import { GoBook } from "react-icons/go";
 function BlogSliderItem({ item }) {
   const { photoUrl, title, description } = item;
   return (
@@ -28,19 +28,26 @@ function BlogSliderItem({ item }) {
         </Link>
       </div>
       <div className="info__side">
-        <h3 className="category">
+        <h5 className="category">
           <Link className="slider__info" to="/">
             {title}
           </Link>
-        </h3>
+        </h5>
 
         <h2 className="title">
           <Link to="/">{description}</Link>
         </h2>
 
-        <span className="posted__time">on <span>August 12, 2019</span></span>
+        <span className="posted__time">
+          on <span>August 12, 2019</span>
+        </span>
 
-        <h4 className="read__more"> <Link className="read__more__link" to="/"><GoBook className="book__icon"/> <span>Read more</span> </Link></h4>
+        <h4 className="read__more">
+
+          <Link className="read__more__link" to="/">
+            <GoBook className="book__icon" /> <span>Read more</span>{" "}
+          </Link>
+        </h4>
       </div>
     </Grid>
   );

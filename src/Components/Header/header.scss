@@ -168,7 +168,13 @@
 
                 .search__icon {
                     display: none;
-
+                    button{
+                        border: none;
+                        outline: none;
+                        background: none;
+                        font-size: 16px;
+                        cursor: pointer;
+                    }
                     @include rsp(736px) {
                         display: block;
                     }

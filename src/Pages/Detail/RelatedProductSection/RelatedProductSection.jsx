@@ -8,7 +8,7 @@ function RelatedProductSection({ products, selectedProduct }) {
  const relatedProducts = products.filter(product => product.price > selectedProduct.price )
   return (
     <section className="related__product">
-      <Container maxWidth="lg">
+      <Container maxWidth="lg"  >
         <Grid container xs={12} flexDirection={"column"} textAlign={"center"}>
           <div className="head__title">
             <h1 className="title">{t("Related_product")}</h1>

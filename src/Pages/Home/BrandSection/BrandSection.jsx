@@ -9,7 +9,7 @@ import "./brand_section.scss";
 function BrandSection() {
   return (
     <section className="brand">
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Swiper
           slidesPerView={6}
           pagination={{ clickable: true }}

@@ -36,15 +36,20 @@ function ProductItem({ item }) {
       item
       
     >
-      <div className="img__side">
+      <div className="img__side" style={{height: "auto"}}>
         <Link to={`/detail/${id}`}  onClick={scrollTo}>
           <img
             className="cover__photo"
             src={coverPhoto}
             alt=""
-            style={{ width: "100%" }}
+            style={{ width: "100%", maxWidth: "100%", height: "auto" }}
           />
-          <img className="hover__img" src={productPictures[0]} alt="" />
+          <img
+           className="hover__img"
+           src={productPictures[0]}
+            alt=""
+            style={{ width: "100%", maxWidth: "100%", height: "auto" }} 
+            />
         </Link>
         <div className="shop__icon__side">
           <Link

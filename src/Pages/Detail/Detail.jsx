@@ -155,7 +155,7 @@ function Detail() {
     <Helmet title={"Detail"}>
       <section className="detail">
         <CommonDetailSection nextData={next} prevData={prev} title={title} />
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" >
           <div className="detail__side">
             <Grid container rowSpacing={4}>
               <Grid
@@ -267,8 +267,9 @@ function Detail() {
                       Hurry! only <span>{stock}</span> left in stock.
                     </p>
                     <div className="progress__bar">
-                      <div></div>
+                      <div><span>50</span></div>
                     </div>
+                    
                   </div>
                   <h5>{t("Offer_end")}</h5>
                   <Clock time={offer} />

@@ -16,7 +16,7 @@ function BlogSlider({data}) {
       modules={[Navigation]}
       className="blog__swiper"
       breakpoints={{
-        0: {
+          0: {
             slidesPerView: 1,
           },
           650: {

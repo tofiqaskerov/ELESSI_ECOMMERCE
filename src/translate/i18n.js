@@ -13,7 +13,7 @@ i18n.use(Backend)
         },
         fallbackLng:"en",
         debug:true,
-        ns: ["header", "home", "detail"],
+        ns: ["header", "home", "detail", "cart"],
         interpolation:{
             escapeValue:false,
             formatSeparator: ","
